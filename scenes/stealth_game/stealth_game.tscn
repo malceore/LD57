@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://xs8r6aue3u88"]
+
+[ext_resource type="Script" uid="uid://dnb62oawbfrqq" path="res://scenes/stealth_game/ship.gd" id="1_7o2pb"]
+
+[sub_resource type="Gradient" id="Gradient_tlene"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7o2pb"]
+gradient = SubResource("Gradient_tlene")
+
+[sub_resource type="Gradient" id="Gradient_hikq7"]
+colors = PackedColorArray(0.843137, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u3qtp"]
+gradient = SubResource("Gradient_hikq7")
+width = 128
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o2pb"]
+
+[node name="stealth_game" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1063.0
+offset_bottom = 619.0
+texture = SubResource("GradientTexture1D_7o2pb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ship" type="CharacterBody2D" parent="."]
+script = ExtResource("1_7o2pb")
+
+[node name="TextureRect" type="TextureRect" parent="ship"]
+offset_right = 128.0
+offset_bottom = 93.0
+texture = SubResource("GradientTexture1D_u3qtp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ship"]
+shape = SubResource("RectangleShape2D_7o2pb")
