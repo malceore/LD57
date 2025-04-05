@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1ehpky7b03ut"]
+
+[sub_resource type="GDScript" id="GDScript_gi0ku"]
+script/source = "extends CharacterBody2D
+@export var path: Path2D
+var progress: float = 0.0
+
+func _on_area_2d_body_entered(body):
+	if name != body.name:
+		print(body.name)
+
+func _process():
+	progress += 0.01
+"
+
+[sub_resource type="Gradient" id="Gradient_gi0ku"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dmncq"]
+gradient = SubResource("Gradient_gi0ku")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmncq"]
+size = Vector2(179, 363)
+
+[node name="enemy_ship" type="CharacterBody2D"]
+script = SubResource("GDScript_gi0ku")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 179.0
+offset_bottom = 362.0
+texture = SubResource("GradientTexture2D_dmncq")
+
+[node name="vision_cone" type="Polygon2D" parent="TextureRect"]
+position = Vector2(155, 238)
+color = Color(1, 1, 0.0117647, 0.513726)
+polygon = PackedVector2Array(-315.7, 303.99, 151.3, 303.99, -54.7, -15.0099)
+
+[node name="Area2D" type="Area2D" parent="TextureRect/vision_cone"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TextureRect/vision_cone/Area2D"]
+polygon = PackedVector2Array(-315, 302, 152, 302, -56, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(90.5, 181.5)
+shape = SubResource("RectangleShape2D_dmncq")
+
+[connection signal="body_entered" from="TextureRect/vision_cone/Area2D" to="." method="_on_area_2d_body_entered"]
