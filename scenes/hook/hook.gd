@@ -5,19 +5,25 @@ extends Node2D
 @onready var chain = get_node("chain")
 @onready var hook = get_node("hook")
 @onready var inventory = $hook/inventory
+@onready var cooldown = get_node("cooldown")
 
 var hit_count = 0
 
 func on_hit():
-	print("Yo, I got hit!")
 	hit_count += 1
-	
-	if hit_count == 1 and inventory.get_children().size() > 0:
-		var child = inventory.get_child(0)  
-		child.release()
-		child.reparent(get_parent())
-	elif hit_count > 1:
-		print("Bomb explodes!")
+	if inventory.get_children().size() > 0:
+		if hit_count == 1:
+			var child = inventory.get_child(0)  
+			child.release()
+			child.reparent(get_parent())
+		elif hit_count > 1:
+			var child = inventory.get_child(0) 
+			if child != null and child.has_method("explode"):
+				print("Bomb explodes!")
+				child.explode()
+			else:
+				child.release()
+				child.queue_free()
 
 func get_input():
 	if ready:
@@ -27,7 +33,8 @@ func get_input():
 func _physics_process(delta):
 	if ready:
 		var colliding = hook.get_last_slide_collision()
-		if colliding != null:# and colliding.name == "obstacle":
+		if cooldown.is_stopped() && colliding != null:# and colliding.name == "obstacle":
+			cooldown.start()
 			on_hit()
 		get_input()
 		chain.set_point_position(0, get_node("spool").get_global_position())

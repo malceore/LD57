@@ -1,13 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://6810kunj2ydg"]
+[gd_scene load_steps=5 format=3 uid="uid://6810kunj2ydg"]
 
 [ext_resource type="Script" uid="uid://cyua0k844dap5" path="res://scenes/bomb/bomb.gd" id="1_yj6gm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqjch"]
 radius = 50.1597
 
+[sub_resource type="Gradient" id="Gradient_yj6gm"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rqjch"]
+gradient = SubResource("Gradient_yj6gm")
+fill_from = Vector2(0, 1)
+
 [node name="bomb" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 4
+freeze_mode = 1
 script = ExtResource("1_yj6gm")
 
 [node name="graphic" type="Polygon2D" parent="."]
@@ -23,6 +30,26 @@ debug_color = Color(0.90868, 0.0998603, 0.689213, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_rqjch")
+
+[node name="particals" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 12
+texture = SubResource("GradientTexture2D_rqjch")
+lifetime = 5.58
+one_shot = true
+preprocess = 0.75
+speed_scale = 9.0
+explosiveness = 1.0
+randomness = 0.72
+fixed_fps = 30
+spread = 137.81
+gravity = Vector2(0, 5)
+initial_velocity_min = 72.9
+initial_velocity_max = 73.05
+damping_max = 0.782
+scale_amount_max = 6.0
+hue_variation_min = -0.53
+hue_variation_max = 0.61
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
