@@ -8,6 +8,9 @@ var rotation_speed = 1.5
 func _process(delta):
 	var move_direction = Vector2.ZERO
 	var rotate_direction = 0.0
+	
+	if Input.is_action_just_pressed("dive"):
+		attempt_dive()
 
 	if Input.is_action_pressed("up"):
 		move_direction += Vector2.UP
@@ -34,3 +37,8 @@ func exited_area(area):
 		return
 	current_area = null
 	print(current_area)
+
+func attempt_dive():
+	if(current_area == null):
+		return
+	print("Diving!")

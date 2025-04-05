@@ -40,3 +40,4 @@ texture = SubResource("GradientTexture1D_u3qtp")
 shape = SubResource("RectangleShape2D_7o2pb")
 
 [node name="dive_spot" parent="." instance=ExtResource("2_hikq7")]
+position = Vector2(250, 0)
