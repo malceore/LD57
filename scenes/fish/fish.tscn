@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyjg3tu6okjbm"]
+
+[ext_resource type="Script" uid="uid://vk4ut26m2syi" path="res://scenes/fish/fish.gd" id="1_r17d5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q28ix"]
+size = Vector2(158, 39)
+
+[node name="Fish" type="Node2D"]
+script = ExtResource("1_r17d5")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-180, -178)
+color = Color(0.526427, 0.739458, 0.751527, 1)
+polygon = PackedVector2Array(263, 183, 241, 155, 154, 165, 110, 141, 94, 147, 120, 165, 96, 183, 130, 179, 197, 199, 251, 200)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4, -1.5)
+shape = SubResource("RectangleShape2D_q28ix")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

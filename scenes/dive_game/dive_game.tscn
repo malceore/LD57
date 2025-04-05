@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctkqqdsl58d8v"]
+[gd_scene load_steps=15 format=3 uid="uid://ctkqqdsl58d8v"]
 
 [ext_resource type="PackedScene" uid="uid://dlmaqgfrr00m4" path="res://scenes/hook/hook.tscn" id="1_dp1kh"]
 [ext_resource type="PackedScene" uid="uid://6810kunj2ydg" path="res://scenes/bomb/bomb.tscn" id="1_iy2vq"]
+[ext_resource type="PackedScene" uid="uid://cyjg3tu6okjbm" path="res://scenes/fish/fish.tscn" id="3_7bg3v"]
+[ext_resource type="PackedScene" uid="uid://1hewmdtm0bu4" path="res://scenes/fish_spawner/fish_spawner.tscn" id="3_77au6"]
 [ext_resource type="PackedScene" uid="uid://ck6d856w06301" path="res://scenes/ship_return/ship_return.tscn" id="3_y4m4o"]
 [ext_resource type="PackedScene" uid="uid://bctsirkhbaav0" path="res://scenes/obstacle/obstacle.tscn" id="4_gyhy8"]
 
@@ -26,6 +28,12 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gyhy8"]
 normal = Vector2(0, 1)
 distance = -203.0
+
+[sub_resource type="Curve2D" id="Curve2D_av5r6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -7, 289, 0, 0, 0, 0, -22, 628, 0, 0, 0, 0, -12, 1058, 0, 0, 0, 0, -32, 1447, 0, 0, 0, 0, -32, 2023, 0, 0, 0, 0, -7, 2512)
+}
+point_count = 6
 
 [node name="Node2D" type="Node2D"]
 
@@ -73,6 +81,18 @@ shape = SubResource("WorldBoundaryShape2D_y4m4o")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundry"]
 shape = SubResource("WorldBoundaryShape2D_gyhy8")
+
+[node name="fish_spawner" parent="." node_paths=PackedStringArray("spawn_points") instance=ExtResource("3_77au6")]
+position = Vector2(-1055, 36)
+fish_scene = ExtResource("3_7bg3v")
+spawn_points = NodePath("Path2D")
+
+[node name="Path2D" type="Path2D" parent="fish_spawner"]
+curve = SubResource("Curve2D_av5r6")
+
+[node name="Fish" parent="." instance=ExtResource("3_7bg3v")]
+visible = false
+position = Vector2(-1055, 36)
 
 [node name="ShipReturn" parent="." instance=ExtResource("3_y4m4o")]
 position = Vector2(1, -220)
