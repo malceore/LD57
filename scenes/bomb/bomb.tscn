@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://6810kunj2ydg"]
+
+[node name="bomb" type="Node2D"]
+
+[node name="graphic" type="Polygon2D" parent="."]
+color = Color(0.821004, 0.747525, 0.908327, 1)
+polygon = PackedVector2Array(-47, 6, -16, 35, 21, 34, 52, 8, 52, -29, 19, -50, -20, -50, -48, -21)

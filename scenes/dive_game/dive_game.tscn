@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctkqqdsl58d8v"]
+
+[ext_resource type="PackedScene" uid="uid://dlmaqgfrr00m4" path="res://scenes/hook/hook.tscn" id="1_dp1kh"]
+[ext_resource type="PackedScene" uid="uid://6810kunj2ydg" path="res://scenes/bomb/bomb.tscn" id="1_iy2vq"]
+
+[sub_resource type="Gradient" id="Gradient_hey8n"]
+colors = PackedColorArray(0.0332386, 0.0219696, 0.042057, 1, 0.718887, 0.915002, 0.504979, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dp1kh"]
+gradient = SubResource("Gradient_hey8n")
+
+[sub_resource type="Gradient" id="Gradient_iy2vq"]
+colors = PackedColorArray(0.109031, 0.243214, 0.302055, 1, 0.800802, 0.948175, 0.965227, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y4m4o"]
+gradient = SubResource("Gradient_iy2vq")
+
+[sub_resource type="Gradient" id="Gradient_dp1kh"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iy2vq"]
+gradient = SubResource("Gradient_dp1kh")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+offset_left = -1028.0
+offset_top = 3362.0
+offset_right = 2539.0
+offset_bottom = 5444.0
+rotation = 4.70877
+texture = SubResource("GradientTexture1D_dp1kh")
+
+[node name="TextureRect2" type="TextureRect" parent="Background"]
+offset_left = -770.0
+offset_top = -209.0
+offset_right = -375.0
+offset_bottom = 1534.0
+rotation = -1.57187
+texture = SubResource("GradientTexture1D_y4m4o")
+
+[node name="boat" type="Polygon2D" parent="Background"]
+position = Vector2(-6, -177)
+color = Color(0.105435, 0.206834, 0.20296, 1)
+polygon = PackedVector2Array(-123, -78, -36, -78, -36, -149, 21, -151, 21, -84, 146, -84, 122, -43, 97, -34, -96, -34, -110, -43)
+
+[node name="TextureRect3" type="TextureRect" parent="Background"]
+offset_left = -1078.0
+offset_top = 3467.0
+offset_right = -254.0
+offset_bottom = 4336.0
+rotation = -1.58573
+texture = SubResource("GradientTexture1D_iy2vq")
+
+[node name="TextureRect4" type="TextureRect" parent="Background"]
+offset_left = 318.0
+offset_top = 3528.0
+offset_right = 869.0
+offset_bottom = 4397.0
+rotation = -1.58573
+texture = SubResource("GradientTexture1D_iy2vq")
+
+[node name="TextureRect5" type="TextureRect" parent="Background"]
+offset_left = -405.0
+offset_top = 3793.0
+offset_right = 146.0
+offset_bottom = 4662.0
+rotation = -1.58573
+texture = SubResource("GradientTexture1D_iy2vq")
+
+[node name="bomb" parent="." instance=ExtResource("1_iy2vq")]
+position = Vector2(38, 3081)
+
+[node name="hook" parent="." instance=ExtResource("1_dp1kh")]
+position = Vector2(0, -118)
