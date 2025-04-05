@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctkqqdsl58d8v"]
+[gd_scene load_steps=16 format=3 uid="uid://ctkqqdsl58d8v"]
 
 [ext_resource type="PackedScene" uid="uid://dlmaqgfrr00m4" path="res://scenes/hook/hook.tscn" id="1_dp1kh"]
 [ext_resource type="PackedScene" uid="uid://6810kunj2ydg" path="res://scenes/bomb/bomb.tscn" id="1_iy2vq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://1hewmdtm0bu4" path="res://scenes/fish_spawner/fish_spawner.tscn" id="3_77au6"]
 [ext_resource type="PackedScene" uid="uid://ck6d856w06301" path="res://scenes/ship_return/ship_return.tscn" id="3_y4m4o"]
 [ext_resource type="PackedScene" uid="uid://bctsirkhbaav0" path="res://scenes/obstacle/obstacle.tscn" id="4_gyhy8"]
+[ext_resource type="PackedScene" uid="uid://3mmam7vt30xk" path="res://scenes/popup/popup.tscn" id="7_av5r6"]
 
 [sub_resource type="Gradient" id="Gradient_hey8n"]
 colors = PackedColorArray(0.0332386, 0.0219696, 0.042057, 1, 0.718887, 0.915002, 0.504979, 1)
@@ -114,3 +115,10 @@ position = Vector2(-254, 3469)
 
 [node name="obstacle" parent="." instance=ExtResource("4_gyhy8")]
 position = Vector2(320, 3455)
+
+[node name="Popup" parent="." instance=ExtResource("7_av5r6")]
+offset_left = -247.0
+offset_top = -368.0
+offset_right = 257.0
+offset_bottom = -179.0
+tab = 2
