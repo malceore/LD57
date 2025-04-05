@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://xs8r6aue3u88"]
+[gd_scene load_steps=14 format=3 uid="uid://xs8r6aue3u88"]
 
 [ext_resource type="Script" uid="uid://dnb62oawbfrqq" path="res://scenes/stealth_game/ship.gd" id="1_7o2pb"]
 [ext_resource type="PackedScene" uid="uid://cwmb2opl1itpl" path="res://scenes/stealth_game/dive_spot/dive_spot.tscn" id="2_hikq7"]
+[ext_resource type="PackedScene" uid="uid://d1ehpky7b03ut" path="res://scenes/enemy_ship/enemy_ship.tscn" id="3_u3qtp"]
 
 [sub_resource type="Gradient" id="Gradient_tlene"]
+colors = PackedColorArray(0, 0, 0.760784, 1, 0, 0.321569, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7o2pb"]
 gradient = SubResource("Gradient_tlene")
@@ -20,14 +22,36 @@ width = 128
 [sub_resource type="CircleShape2D" id="CircleShape2D_hikq7"]
 radius = 200.0
 
+[sub_resource type="Curve2D" id="Curve2D_gso01"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3987, 103, 0, 0, 0, 0, 4202.16, 102.574, 0, 0, 0, 0, 4329.98, 82.392, 0, 0, 0, 0, 4444.35, 122.757, 0, 0, 0, 0, 4558.72, 156.395, 0, 0, 0, 0, 4666.36, 169.849, 0, 0, 0, 0, 4800, 172, 0, 0, 0, 0, 4814.36, 277.49, 0, 0, 0, 0, 4868.18, 371.675, 0, 0, 0, 0, 4935, 499, 0, 0, 0, 0, 5009.46, 647.502, 0, 0, 0, 0, 5053, 840, 0, 0, 0, 0, 5083.46, 1024.24, 0, 0, 0, 0, 5083.46, 1104.97, 0, 0, 0, 0, 5070.01, 1232.79, 0, 0, 0, 0, 5070.01, 1360.62, 0, 0, 0, 0, 5028, 1483, 0, 0, 0, 0, 4935, 1576, 0, 0, 0, 0, 4841, 1677, 0, 0, 0, 0, 4747.09, 1744.09, 0, 0, 0, 0, 4660, 1805, 0, 0, 0, 0, 4564, 1816, 0, 0, 0, 0, 4411, 1832, 0, 0, 0, 0, 4276.16, 1824.82, 0, 0, 0, 0, 4155, 1845, 0, 0, 0, 0, 4007.06, 1824.82, 0, 0, 0, 0, 3926.33, 1777.72, 0, 0, 0, 0, 3832, 1751, 0, 0, 0, 0, 3737.96, 1670.08, 0, 0, 0, 0, 3677.41, 1582.63, 0, 0, 0, 0, 3570, 1488, 0, 0, 0, 0, 3509.23, 1367.34, 0, 0, 0, 0, 3465, 1181, 0, 0, 0, 0, 3468.86, 1010.79, 0, 0, 0, 0, 3448.68, 889.692, 0, 0, 0, 0, 3462.13, 768.597, 0, 0, 0, 0, 3462.13, 654.23, 0, 0, 0, 0, 3522, 563, 0, 0, 0, 0, 3596.68, 459.132, 0, 0, 0, 0, 3697.6, 324.582, 0, 0, 0, 0, 3848, 148)
+}
+point_count = 41
+
+[sub_resource type="Curve2D" id="Curve2D_sqlxv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 4450, 2150, 0, 0, 0, 0, 4668, 2381, 0, 0, 0, 0, 4823, 2603, 0, 0, 0, 0, 4924, 2872, 0, 0, 0, 0, 4951, 3235, 0, 0, 0, 0, 4890, 3578, 0, 0, 0, 0, 4792, 3884, 0, 0, 0, 0, 4648, 3995, 0, 0, 0, 0, 4393, 4076, 0, 0, 0, 0, 4056, 4076, 0, 0, 0, 0, 3733, 3982, 0, 0, 0, 0, 3417, 3861, 0, 0, 0, 0, 3254, 3608, 0, 0, 0, 0, 3121, 3222, 0, 0, 0, 0, 3132, 2761, 0, 0, 0, 0, 3208, 2556, 0, 0, 0, 0, 3336, 2361, 0, 0, 0, 0, 3511, 2253, 0, 0, 0, 0, 3693, 2150, 0, 0, 0, 0, 3969, 2085, 0, 0, 0, 0, 4296, 2110)
+}
+point_count = 21
+
+[sub_resource type="Curve2D" id="Curve2D_ygplh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2464, 3396, 0, 0, 0, 0, 2259.91, 3672.36, 0, 0, 0, 0, 2065, 3854, 0, 0, 0, 0, 1862, 4015, 0, 0, 0, 0, 1621, 4076, 0, 0, 0, 0, 1259, 4096, 0, 0, 0, 0, 955, 4089, 0, 0, 0, 0, 681, 4031, 0, 0, 0, 0, 423, 3888, 0, 0, 0, 0, 242, 3665, 0, 0, 0, 0, 154, 3235, 0, 0, 0, 0, 144, 2851, 0, 0, 0, 0, 250, 2444, 0, 0, 0, 0, 450, 2233, 0, 0, 0, 0, 673, 2085, 0, 0, 0, 0, 968, 1943, 0, 0, 0, 0, 1284, 1874, 0, 0, 0, 0, 1796, 1957, 0, 0, 0, 0, 2114, 2191, 0, 0, 0, 0, 2273, 2374, 0, 0, 0, 0, 2358, 2598, 0, 0, 0, 0, 2421, 2831, 0, 0, 0, 0, 2440, 3103)
+}
+point_count = 23
+
+[sub_resource type="Curve2D" id="Curve2D_23whf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2620, 1449, 0, 0, 0, 0, 2294, 1610, 0, 0, 0, 0, 2017, 1644, 0, 0, 0, 0, 1749, 1670, 0, 0, 0, 0, 1473, 1630, 0, 0, 0, 0, 1285, 1563, 0, 0, 0, 0, 1028.77, 1535.53, 0, 0, 0, 0, 813, 1441, 0, 0, 0, 0, 658, 1319, 0, 0, 0, 0, 544.393, 1104.97, 0, 0, 0, 0, 495, 871, 0, 0, 0, 0, 524.211, 654.23, 0, 0, 0, 0, 601, 456, 0, 0, 0, 0, 699.126, 284.217, 0, 0, 0, 0, 853, 195, 0, 0, 0, 0, 1048.96, 129.484, 0, 0, 0, 0, 1252, 122, 0, 0, 0, 0, 1700, 89, 0, 0, 0, 0, 2066, 146, 0, 0, 0, 0, 2260, 224, 0, 0, 0, 0, 2388, 304, 0, 0, 0, 0, 2465, 439, 0, 0, 0, 0, 2542, 674, 0, 0, 0, 0, 2546, 920, 0, 0, 0, 0, 2587, 1131)
+}
+point_count = 25
+
 [node name="stealth_game" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1063.0
-offset_bottom = 619.0
+offset_right = 5181.0
+offset_bottom = 4481.0
 texture = SubResource("GradientTexture1D_7o2pb")
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="ship" type="CharacterBody2D" parent="."]
 script = ExtResource("1_7o2pb")
@@ -47,5 +71,43 @@ shape = SubResource("RectangleShape2D_7o2pb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship/sonar"]
 shape = SubResource("CircleShape2D_hikq7")
 
+[node name="Camera2D" type="Camera2D" parent="ship"]
+
 [node name="dive_spot" parent="." instance=ExtResource("2_hikq7")]
 position = Vector2(250, 0)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_gso01")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(3987, 103)
+rotation = -0.00197778
+
+[node name="enemy_ship" parent="Path2D/PathFollow2D" instance=ExtResource("3_u3qtp")]
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_sqlxv")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(4450, 2150)
+rotation = 0.814343
+
+[node name="enemy_ship" parent="Path2D2/PathFollow2D" instance=ExtResource("3_u3qtp")]
+
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ygplh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+position = Vector2(2464, 3396)
+rotation = 2.2069
+
+[node name="enemy_ship" parent="Path2D3/PathFollow2D" instance=ExtResource("3_u3qtp")]
+
+[node name="Path2D4" type="Path2D" parent="."]
+curve = SubResource("Curve2D_23whf")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
+position = Vector2(2620, 1449)
+rotation = 2.68287
+
+[node name="enemy_ship" parent="Path2D4/PathFollow2D" instance=ExtResource("3_u3qtp")]
