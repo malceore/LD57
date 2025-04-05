@@ -18,3 +18,5 @@ offset_top = 81.0
 offset_right = 90.0
 offset_bottom = 115.0
 text = "Play"
+
+[node name="Node" type="Node" parent="."]
