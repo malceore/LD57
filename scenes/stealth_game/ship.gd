@@ -11,7 +11,9 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("dive"):
 		attempt_dive()
-
+	if Input.is_action_just_pressed("sonar"):
+		attempt_sonar_sweep()
+	
 	if Input.is_action_pressed("up"):
 		move_direction += Vector2.UP
 	if Input.is_action_pressed("down"):
@@ -42,3 +44,8 @@ func attempt_dive():
 	if(current_area == null):
 		return
 	print("Diving!")
+
+func attempt_sonar_sweep():
+	var dive_spots = $sonar.get_overlapping_areas()
+	for spot in dive_spots:
+		spot.reveal_spot()
