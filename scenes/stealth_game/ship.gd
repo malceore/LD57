@@ -48,4 +48,5 @@ func attempt_dive():
 func attempt_sonar_sweep():
 	var dive_spots = $sonar.get_overlapping_areas()
 	for spot in dive_spots:
-		spot.reveal_spot()
+		if spot.has_method("reveal_spot"):
+			spot.reveal_spot()
