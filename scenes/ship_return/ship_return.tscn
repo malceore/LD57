@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck6d856w06301"]
+
+[ext_resource type="Script" uid="uid://dr8jv60nto0ty" path="res://scenes/ship_return/ship_return.gd" id="1_dikw6"]
+[ext_resource type="PackedScene" uid="uid://dqeweh216gmlj" path="res://scenes/float_text/float_text.tscn" id="2_e7i2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iy2vq"]
+size = Vector2(267, 162)
+
+[node name="ShipReturn" type="Area2D"]
+script = ExtResource("1_dikw6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_iy2vq")
+
+[node name="float_text" parent="." instance=ExtResource("2_e7i2m")]
+position = Vector2(61, -82)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

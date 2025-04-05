@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctkqqdsl58d8v"]
+[gd_scene load_steps=12 format=3 uid="uid://ctkqqdsl58d8v"]
 
 [ext_resource type="PackedScene" uid="uid://dlmaqgfrr00m4" path="res://scenes/hook/hook.tscn" id="1_dp1kh"]
 [ext_resource type="PackedScene" uid="uid://6810kunj2ydg" path="res://scenes/bomb/bomb.tscn" id="1_iy2vq"]
+[ext_resource type="PackedScene" uid="uid://ck6d856w06301" path="res://scenes/ship_return/ship_return.tscn" id="3_y4m4o"]
+[ext_resource type="PackedScene" uid="uid://bctsirkhbaav0" path="res://scenes/obstacle/obstacle.tscn" id="4_gyhy8"]
 
 [sub_resource type="Gradient" id="Gradient_hey8n"]
 colors = PackedColorArray(0.0332386, 0.0219696, 0.042057, 1, 0.718887, 0.915002, 0.504979, 1)
@@ -15,10 +17,15 @@ colors = PackedColorArray(0.109031, 0.243214, 0.302055, 1, 0.800802, 0.948175, 0
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_y4m4o"]
 gradient = SubResource("Gradient_iy2vq")
 
-[sub_resource type="Gradient" id="Gradient_dp1kh"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iy2vq"]
+normal = Vector2(-1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_iy2vq"]
-gradient = SubResource("Gradient_dp1kh")
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y4m4o"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gyhy8"]
+normal = Vector2(0, 1)
+distance = -203.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -26,51 +33,63 @@ gradient = SubResource("Gradient_dp1kh")
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
 offset_left = -1028.0
-offset_top = 3362.0
+offset_top = 3363.0
 offset_right = 2539.0
-offset_bottom = 5444.0
+offset_bottom = 5445.0
 rotation = 4.70877
 texture = SubResource("GradientTexture1D_dp1kh")
 
 [node name="TextureRect2" type="TextureRect" parent="Background"]
-offset_left = -770.0
+offset_left = -1033.0
 offset_top = -209.0
-offset_right = -375.0
-offset_bottom = 1534.0
+offset_right = -638.0
+offset_bottom = 1848.0
 rotation = -1.57187
 texture = SubResource("GradientTexture1D_y4m4o")
 
 [node name="boat" type="Polygon2D" parent="Background"]
+visible = false
 position = Vector2(-6, -177)
 color = Color(0.105435, 0.206834, 0.20296, 1)
 polygon = PackedVector2Array(-123, -78, -36, -78, -36, -149, 21, -151, 21, -84, 146, -84, 122, -43, 97, -34, -96, -34, -110, -43)
 
-[node name="TextureRect3" type="TextureRect" parent="Background"]
-offset_left = -1078.0
-offset_top = 3467.0
-offset_right = -254.0
-offset_bottom = 4336.0
-rotation = -1.58573
-texture = SubResource("GradientTexture1D_iy2vq")
-
-[node name="TextureRect4" type="TextureRect" parent="Background"]
-offset_left = 318.0
-offset_top = 3528.0
-offset_right = 869.0
-offset_bottom = 4397.0
-rotation = -1.58573
-texture = SubResource("GradientTexture1D_iy2vq")
-
-[node name="TextureRect5" type="TextureRect" parent="Background"]
-offset_left = -405.0
-offset_top = 3793.0
-offset_right = 146.0
-offset_bottom = 4662.0
-rotation = -1.58573
-texture = SubResource("GradientTexture1D_iy2vq")
-
-[node name="bomb" parent="." instance=ExtResource("1_iy2vq")]
+[node name="bomb" parent="." node_paths=PackedStringArray("ship_return") instance=ExtResource("1_iy2vq")]
 position = Vector2(38, 3081)
+ship_return = NodePath("../ShipReturn")
 
 [node name="hook" parent="." instance=ExtResource("1_dp1kh")]
 position = Vector2(0, -118)
+
+[node name="WorldBoundry" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundry"]
+position = Vector2(514, -210)
+shape = SubResource("WorldBoundaryShape2D_iy2vq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundry"]
+position = Vector2(-516, -209)
+shape = SubResource("WorldBoundaryShape2D_y4m4o")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundry"]
+shape = SubResource("WorldBoundaryShape2D_gyhy8")
+
+[node name="ShipReturn" parent="." instance=ExtResource("3_y4m4o")]
+position = Vector2(1, -220)
+
+[node name="obstacle6" parent="." instance=ExtResource("4_gyhy8")]
+position = Vector2(-440, 3039)
+
+[node name="obstacle5" parent="." instance=ExtResource("4_gyhy8")]
+position = Vector2(-272, 2771)
+
+[node name="obstacle4" parent="." instance=ExtResource("4_gyhy8")]
+position = Vector2(-525, 3309)
+
+[node name="obstacle3" parent="." instance=ExtResource("4_gyhy8")]
+position = Vector2(31, 3497)
+
+[node name="obstacle2" parent="." instance=ExtResource("4_gyhy8")]
+position = Vector2(-254, 3469)
+
+[node name="obstacle" parent="." instance=ExtResource("4_gyhy8")]
+position = Vector2(320, 3455)

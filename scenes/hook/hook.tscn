@@ -5,23 +5,25 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1wii"]
 radius = 43.7379
 
-[node name="hook" type="CharacterBody2D"]
+[node name="hook" type="Node2D"]
 script = ExtResource("1_x1wii")
 
-[node name="graphic" type="Polygon2D" parent="."]
+[node name="spool" type="Node2D" parent="."]
+
+[node name="chain" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+
+[node name="hook" type="CharacterBody2D" parent="."]
+collision_layer = 3
+
+[node name="graphic" type="Polygon2D" parent="hook"]
 color = Color(0.455413, 0.296797, 0.493037, 1)
 polygon = PackedVector2Array(-9, -70, -8, -44, -40, -3, -40, 28, -2, 50, 45, 29, 38, -8, 19, 25, -15, 23, -16, -6, 9, -34, 10, -76)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hook"]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_x1wii")
 
-[node name="spool" type="Node2D" parent="."]
-position = Vector2(0, -101)
+[node name="Camera2D" type="Camera2D" parent="hook"]
 
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 0, 0)
-
-[node name="Node" type="Node" parent="."]
-
-[node name="Node2D" type="Node2D" parent="."]
+[node name="inventory" type="Node2D" parent="hook"]
