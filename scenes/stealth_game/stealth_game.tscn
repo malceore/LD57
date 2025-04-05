@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://xs8r6aue3u88"]
+[gd_scene load_steps=8 format=3 uid="uid://xs8r6aue3u88"]
 
 [ext_resource type="Script" uid="uid://dnb62oawbfrqq" path="res://scenes/stealth_game/ship.gd" id="1_7o2pb"]
+[ext_resource type="PackedScene" uid="uid://cwmb2opl1itpl" path="res://scenes/stealth_game/dive_spot/dive_spot.tscn" id="2_hikq7"]
 
 [sub_resource type="Gradient" id="Gradient_tlene"]
 
@@ -37,3 +38,5 @@ texture = SubResource("GradientTexture1D_u3qtp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship"]
 shape = SubResource("RectangleShape2D_7o2pb")
+
+[node name="dive_spot" parent="." instance=ExtResource("2_hikq7")]

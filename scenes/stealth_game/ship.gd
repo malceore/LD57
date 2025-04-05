@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var current_area = null
+
 var speed = 100.0
 var rotation_speed = 1.5
 
@@ -22,3 +24,13 @@ func _process(delta):
 	velocity = move_direction.normalized() * speed
 
 	move_and_slide()
+
+func entered_area(area):
+	current_area = area
+	print(current_area)
+
+func exited_area(area):
+	if(area != current_area):
+		return
+	current_area = null
+	print(current_area)
