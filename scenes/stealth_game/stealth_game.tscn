@@ -29,8 +29,10 @@ texture = SubResource("GradientTexture1D_7o2pb")
 script = ExtResource("1_7o2pb")
 
 [node name="TextureRect" type="TextureRect" parent="ship"]
-offset_right = 128.0
-offset_bottom = 93.0
+offset_left = -65.0
+offset_top = -47.0
+offset_right = 63.0
+offset_bottom = 46.0
 texture = SubResource("GradientTexture1D_u3qtp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship"]
