@@ -1,0 +1,122 @@
+[gd_scene load_steps=15 format=3 uid="uid://cwuunx5ow510l"]
+
+[ext_resource type="PackedScene" uid="uid://6810kunj2ydg" path="res://scenes/bomb/bomb.tscn" id="1_3kxwy"]
+[ext_resource type="PackedScene" uid="uid://dlmaqgfrr00m4" path="res://scenes/hook/hook.tscn" id="2_xoauu"]
+[ext_resource type="PackedScene" uid="uid://1hewmdtm0bu4" path="res://scenes/fish_spawner/fish_spawner.tscn" id="3_spcpt"]
+[ext_resource type="PackedScene" uid="uid://cyjg3tu6okjbm" path="res://scenes/fish/fish.tscn" id="4_oxexh"]
+[ext_resource type="PackedScene" uid="uid://ck6d856w06301" path="res://scenes/ship_return/ship_return.tscn" id="5_nk75p"]
+[ext_resource type="PackedScene" uid="uid://3mmam7vt30xk" path="res://scenes/popup/popup.tscn" id="6_5prmk"]
+
+[sub_resource type="Gradient" id="Gradient_hey8n"]
+colors = PackedColorArray(0.0332386, 0.0219696, 0.042057, 1, 0.718887, 0.915002, 0.504979, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jhb68"]
+gradient = SubResource("Gradient_hey8n")
+
+[sub_resource type="Gradient" id="Gradient_iy2vq"]
+colors = PackedColorArray(0.109031, 0.243214, 0.302055, 1, 0.800802, 0.948175, 0.965227, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3t8do"]
+gradient = SubResource("Gradient_iy2vq")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ojtmw"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6hkph"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_db06m"]
+normal = Vector2(0, 1)
+distance = -203.0
+
+[sub_resource type="Curve2D" id="Curve2D_41tt7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -7, 289, 0, 0, 0, 0, -22, 628, 0, 0, 0, 0, -12, 1058, 0, 0, 0, 0, -32, 1447, 0, 0, 0, 0, -32, 2023, 0, 0, 0, 0, -7, 2512)
+}
+point_count = 6
+
+[node name="dive_mission_4" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+offset_left = -2014.0
+offset_top = 4012.0
+offset_right = 2198.0
+offset_bottom = 8558.0
+rotation = 4.70877
+texture = SubResource("GradientTexture1D_jhb68")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="Background"]
+offset_left = -2091.0
+offset_top = -208.0
+offset_right = -1696.0
+offset_bottom = 4451.0
+rotation = -1.57187
+texture = SubResource("GradientTexture1D_3t8do")
+
+[node name="boat" type="Polygon2D" parent="Background"]
+position = Vector2(-6, -177)
+color = Color(0.105435, 0.206834, 0.20296, 1)
+polygon = PackedVector2Array(-123, -78, -36, -78, -36, -149, 21, -151, 21, -84, 146, -84, 122, -43, 97, -34, -96, -34, -110, -43)
+
+[node name="obstacle" type="Polygon2D" parent="Background"]
+color = Color(0.231373, 0.305882, 0.254902, 1)
+polygon = PackedVector2Array(-647, 1482, -507, 1986, 41, 2304, -692, 2674, -655, 2903, -18, 2785, 663, 2955, 1432, 2289, 1595, 1445)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background/obstacle"]
+collision_layer = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/obstacle/StaticBody2D"]
+polygon = PackedVector2Array(-647, 1482, -507, 1986, 41, 2304, -692, 2674, -655, 2903, -18, 2785, 663, 2955, 1432, 2289, 1595, 1445)
+
+[node name="obstacle2" type="Polygon2D" parent="Background"]
+color = Color(0.234225, 0.30909, 0.25618, 1)
+polygon = PackedVector2Array(-114, 772, -114, 942, -1328, 1142, -832, 2267, -1580, 2837, -1602, 3599, -329, 3532, -92, 3155, 196, 3162, 714, 3591, 1262, 2918, 2165, 2985, 2017, 1319, 1758, 1053, 515, 972, 500, 757, 3105, 683, 2824, 4368, -2401, 4346, -2357, 676)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background/obstacle2"]
+collision_layer = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/obstacle2/StaticBody2D"]
+polygon = PackedVector2Array(-114, 772, -114, 942, -1328, 1142, -832, 2267, -1580, 2837, -1602, 3599, -329, 3532, -92, 3155, 196, 3162, 714, 3591, 1262, 2918, 2165, 2985, 2017, 1319, 1758, 1053, 515, 972, 500, 757, 3105, 683, 2824, 4368, -2401, 4346, -2357, 676)
+
+[node name="bomb" parent="." node_paths=PackedStringArray("ship_return") instance=ExtResource("1_3kxwy")]
+position = Vector2(38, 3081)
+ship_return = NodePath("")
+
+[node name="hook" parent="." instance=ExtResource("2_xoauu")]
+position = Vector2(0, -118)
+
+[node name="WorldBoundry" type="StaticBody2D" parent="."]
+collision_layer = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundry"]
+position = Vector2(1764, -210)
+shape = SubResource("WorldBoundaryShape2D_ojtmw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundry"]
+position = Vector2(-1444, -209)
+shape = SubResource("WorldBoundaryShape2D_6hkph")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundry"]
+shape = SubResource("WorldBoundaryShape2D_db06m")
+
+[node name="fish_spawner" parent="." node_paths=PackedStringArray("spawn_points") instance=ExtResource("3_spcpt")]
+position = Vector2(-1055, 36)
+spawn_rate = 2.0
+fish_scene = ExtResource("4_oxexh")
+spawn_points = NodePath("Path2D")
+
+[node name="Path2D" type="Path2D" parent="fish_spawner"]
+curve = SubResource("Curve2D_41tt7")
+
+[node name="ShipReturn" parent="." instance=ExtResource("5_nk75p")]
+position = Vector2(1, -220)
+
+[node name="Popup" parent="." instance=ExtResource("6_5prmk")]
+offset_left = -247.0
+offset_top = -368.0
+offset_right = 257.0
+offset_bottom = -179.0
+tab = 2
