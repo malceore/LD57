@@ -121,3 +121,5 @@ offset_bottom = 2257.0
 
 [node name="ScoreDisplay" parent="Camera2D/Control" instance=ExtResource("6_ygplh")]
 position = Vector2(2386, 1558)
+
+[connection signal="dive" from="ship" to="." method="_on_ship_dive"]

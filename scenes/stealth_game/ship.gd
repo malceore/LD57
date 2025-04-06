@@ -40,13 +40,13 @@ func exited_area(area):
 	if(area != current_area):
 		return
 	current_area = null
-	print(current_area)
 
 func attempt_dive():
 	if(current_area == null):
 		return
+	var completed_area = current_area
 	dive.emit(current_area.location)
-	print("Diving!")
+	completed_area.queue_free()
 
 func attempt_sonar_sweep():
 	var dive_spots = $sonar.get_overlapping_areas()
