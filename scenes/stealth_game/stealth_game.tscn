@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://xs8r6aue3u88"]
+[gd_scene load_steps=19 format=3 uid="uid://xs8r6aue3u88"]
 
 [ext_resource type="Script" uid="uid://2tdjv3idlg51" path="res://scenes/stealth_game/stealth_game.gd" id="1_gso01"]
 [ext_resource type="PackedScene" uid="uid://cwmb2opl1itpl" path="res://scenes/stealth_game/dive_spot/dive_spot.tscn" id="2_hikq7"]
@@ -37,6 +37,13 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 2620, 1449, 0, 0, 0, 0, 2294, 1610, 0, 0, 0, 0, 2017, 1644, 0, 0, 0, 0, 1749, 1670, 0, 0, 0, 0, 1473, 1630, 0, 0, 0, 0, 1285, 1563, 0, 0, 0, 0, 1028.77, 1535.53, 0, 0, 0, 0, 813, 1441, 0, 0, 0, 0, 658, 1319, 0, 0, 0, 0, 544.393, 1104.97, 0, 0, 0, 0, 495, 871, 0, 0, 0, 0, 524.211, 654.23, 0, 0, 0, 0, 601, 456, 0, 0, 0, 0, 699.126, 284.217, 0, 0, 0, 0, 853, 195, 0, 0, 0, 0, 1048.96, 129.484, 0, 0, 0, 0, 1252, 122, 0, 0, 0, 0, 1700, 89, 0, 0, 0, 0, 2066, 146, 0, 0, 0, 0, 2260, 224, 0, 0, 0, 0, 2388, 304, 0, 0, 0, 0, 2465, 439, 0, 0, 0, 0, 2542, 674, 0, 0, 0, 0, 2546, 920, 0, 0, 0, 0, 2587, 1131)
 }
 point_count = 25
+
+[sub_resource type="Gradient" id="Gradient_ygplh"]
+offsets = PackedFloat32Array(0, 0.492958, 1)
+colors = PackedColorArray(1.15514e-06, 0.41793, 1.92523e-07, 1, 1, 1, 1, 1, 0, 0.717647, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_23whf"]
+gradient = SubResource("Gradient_ygplh")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ygplh"]
 normal = Vector2(0, 1)
@@ -120,6 +127,19 @@ position = Vector2(2895, 1937)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2895, 1937)
 
+[node name="DiveSpotPointer" type="Node2D" parent="Camera2D"]
+visible = false
+
+[node name="Polygon2D" type="Polygon2D" parent="Camera2D/DiveSpotPointer"]
+position = Vector2(200, 0)
+rotation = 1.5708
+texture = SubResource("GradientTexture2D_23whf")
+polygon = PackedVector2Array(-0.144003, -8.99433, -67.144, 30.0057, -0.144003, 3.00567, 67.856, 30.0057)
+uv = PackedVector2Array(40, -79, -40, -45, 38, -63, 93, -41)
+
+[node name="Timer" type="Timer" parent="Camera2D/DiveSpotPointer"]
+one_shot = true
+
 [node name="Control" type="Control" parent="Camera2D"]
 layout_mode = 3
 anchors_preset = 0
@@ -165,3 +185,5 @@ position = Vector2(0, 4493)
 shape = SubResource("WorldBoundaryShape2D_bj0d7")
 
 [connection signal="dive" from="ship" to="." method="_on_ship_dive"]
+[connection signal="sonar" from="ship" to="." method="_on_ship_sonar"]
+[connection signal="timeout" from="Camera2D/DiveSpotPointer/Timer" to="." method="_on_timer_timeout"]

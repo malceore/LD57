@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal dive(location)
+signal sonar
 
 var current_area = null
 
@@ -53,3 +54,4 @@ func attempt_sonar_sweep():
 	for spot in dive_spots:
 		if spot.has_method("reveal_spot"):
 			spot.reveal_spot()
+	sonar.emit()
