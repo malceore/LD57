@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dckpqhdrol6gh"]
+[gd_scene load_steps=4 format=3 uid="uid://dckpqhdrol6gh"]
+
+[ext_resource type="Script" uid="uid://e40ny5q5y711" path="res://scenes/end_game_screen/end_game_screen.gd" id="1_7ssvc"]
 
 [sub_resource type="Gradient" id="Gradient_t6tv7"]
 colors = PackedColorArray(0.190762, 0.190762, 0.190762, 1, 0.804743, 0.804743, 0.804743, 1)
@@ -13,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7ssvc")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -39,3 +42,13 @@ offset_bottom = 461.0
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
 text = "[b]SCORE: [/b]"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 434.0
+offset_right = 552.0
+offset_bottom = 465.0
+text = "Try Again?"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
