@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://6810kunj2ydg"]
+[gd_scene load_steps=7 format=3 uid="uid://6810kunj2ydg"]
 
 [ext_resource type="Script" uid="uid://cyua0k844dap5" path="res://scenes/bomb/bomb.gd" id="1_yj6gm"]
 [ext_resource type="Texture2D" uid="uid://caefocwuwamlg" path="res://art/dither_art_ld57.png" id="2_rqjch"]
+[ext_resource type="AudioStream" uid="uid://0ak4i0km24pi" path="res://sounds/large-underwater-explosion-190270.mp3" id="3_eax2s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqjch"]
 radius = 50.1597
@@ -71,6 +72,9 @@ visible = false
 texture = ExtResource("2_rqjch")
 region_enabled = true
 region_rect = Rect2(469.408, 6.66177, 171.699, 138.424)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eax2s")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
