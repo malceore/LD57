@@ -16,4 +16,11 @@ shape = SubResource("RectangleShape2D_iy2vq")
 [node name="float_text" parent="." instance=ExtResource("2_e7i2m")]
 position = Vector2(61, -82)
 
+[node name="Button" type="Button" parent="."]
+offset_left = -71.0
+offset_top = -190.0
+offset_right = 71.0
+offset_bottom = -146.0
+text = "Set Sail..."
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

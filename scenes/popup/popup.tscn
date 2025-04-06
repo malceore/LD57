@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://3mmam7vt30xk"]
+
+[ext_resource type="Script" uid="uid://kxukt8ivkmp2" path="res://scenes/popup/popup.gd" id="1_4ejtj"]
+
+[sub_resource type="Gradient" id="Gradient_gl0tk"]
+offsets = PackedFloat32Array(0, 0.144531, 0.945312, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.457031, 0.457031, 0.457031, 1, 0.49918, 0.49918, 0.49918, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4ejtj"]
+gradient = SubResource("Gradient_gl0tk")
+
+[node name="Popup" type="TextureRect"]
+offset_left = -238.0
+offset_top = -86.0
+offset_right = 266.0
+offset_bottom = 103.0
+texture = SubResource("GradientTexture1D_4ejtj")
+script = ExtResource("1_4ejtj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Tutorial1" type="RichTextLabel" parent="VBoxContainer/TabContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Welcome to Depth Charge
+Use WASD/Arrow keys to move around.
+Avoid enemy ships. 
+Use 'space' to send out a sonar to detect sunken explosives. 
+"
+metadata/_tab_index = 0
+
+[node name="Tutorial2" type="RichTextLabel" parent="VBoxContainer/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Collect all sunken bombs and sea mines to clear the way for your allies and win the game!
+"
+metadata/_tab_index = 1
+
+[node name="Tutorial3" type="RichTextLabel" parent="VBoxContainer/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Use WASD/Arrows to dive your hook.
+Be careful with the sunken bombs or they will explode and you'll leave empty handed."
+metadata/_tab_index = 2
+
+[node name="CloseButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
