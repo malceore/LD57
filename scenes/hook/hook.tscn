@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlmaqgfrr00m4"]
+[gd_scene load_steps=9 format=3 uid="uid://dlmaqgfrr00m4"]
 
 [ext_resource type="Script" uid="uid://caww0cfwbffrr" path="res://scenes/hook/hook.gd" id="1_x1wii"]
 [ext_resource type="Texture2D" uid="uid://caefocwuwamlg" path="res://art/dither_art_ld57.png" id="2_75di5"]
+[ext_resource type="AudioStream" uid="uid://dy63l2j0ywbfc" path="res://sounds/water-splash-199583.mp3" id="3_kbm4x"]
 
 [sub_resource type="Animation" id="Animation_kbm4x"]
 length = 0.001
@@ -97,3 +98,6 @@ position = Vector2(-1, -40)
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kbm4x")

@@ -7,9 +7,13 @@ extends Node2D
 @onready var inventory = $hook/inventory
 @onready var cooldown = get_node("cooldown")
 @onready var animation_player = get_node("AnimationPlayer")
+@onready var audio_stream_player = get_node("AudioStreamPlayer")
 
 var hit_count = 0
 var playing = true
+
+func _ready():
+	audio_stream_player.play()
 
 func on_hit():
 	hit_count += 1
