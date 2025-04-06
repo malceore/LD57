@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bwhr0axgv3mkk"]
+[gd_scene load_steps=17 format=3 uid="uid://bwhr0axgv3mkk"]
 
 [ext_resource type="PackedScene" uid="uid://bctsirkhbaav0" path="res://scenes/obstacle/obstacle.tscn" id="1_g5216"]
 [ext_resource type="PackedScene" uid="uid://6810kunj2ydg" path="res://scenes/bomb/bomb.tscn" id="2_rp7iy"]
@@ -29,6 +29,8 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6kyrc"]
 normal = Vector2(0, 1)
 distance = -203.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g5216"]
 
 [sub_resource type="Curve2D" id="Curve2D_kqn0k"]
 _data = {
@@ -78,7 +80,7 @@ rotation = -0.816036
 
 [node name="bomb" parent="." node_paths=PackedStringArray("ship_return") instance=ExtResource("2_rp7iy")]
 position = Vector2(38, 3081)
-ship_return = NodePath("")
+ship_return = NodePath("../ShipReturn")
 
 [node name="hook" parent="." instance=ExtResource("3_kjvbd")]
 position = Vector2(0, -118)
@@ -97,6 +99,10 @@ shape = SubResource("WorldBoundaryShape2D_cujmm")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundry"]
 shape = SubResource("WorldBoundaryShape2D_6kyrc")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBoundry"]
+position = Vector2(-1, 3870)
+shape = SubResource("WorldBoundaryShape2D_g5216")
+
 [node name="fish_spawner" parent="." node_paths=PackedStringArray("spawn_points") instance=ExtResource("4_j0dbf")]
 position = Vector2(-1055, 36)
 spawn_rate = 0.25
@@ -107,7 +113,7 @@ spawn_points = NodePath("Path2D")
 curve = SubResource("Curve2D_kqn0k")
 
 [node name="ShipReturn" parent="." instance=ExtResource("6_nf4nt")]
-position = Vector2(1, -220)
+position = Vector2(1, -140)
 
 [node name="Popup" parent="." instance=ExtResource("7_sb5ra")]
 offset_left = -247.0

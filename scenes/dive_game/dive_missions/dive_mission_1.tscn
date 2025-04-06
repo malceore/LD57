@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://nhm2x7sty0gd"]
+[gd_scene load_steps=14 format=3 uid="uid://nhm2x7sty0gd"]
 
 [ext_resource type="PackedScene" uid="uid://bctsirkhbaav0" path="res://scenes/obstacle/obstacle.tscn" id="1_pds37"]
 [ext_resource type="PackedScene" uid="uid://6810kunj2ydg" path="res://scenes/bomb/bomb.tscn" id="2_sjkat"]
@@ -28,6 +28,8 @@ normal = Vector2(1, 0)
 normal = Vector2(0, 1)
 distance = -203.0
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pds37"]
+
 [node name="dive_mission_1" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
@@ -53,13 +55,14 @@ position = Vector2(-1658, 4795)
 scale = Vector2(12.5545, 7.1265)
 
 [node name="boat" type="Polygon2D" parent="Background"]
+visible = false
 position = Vector2(-6, -177)
 color = Color(0.105435, 0.206834, 0.20296, 1)
 polygon = PackedVector2Array(-123, -78, -36, -78, -36, -149, 21, -151, 21, -84, 146, -84, 122, -43, 97, -34, -96, -34, -110, -43)
 
 [node name="bomb" parent="." node_paths=PackedStringArray("ship_return") instance=ExtResource("2_sjkat")]
 position = Vector2(38, 3081)
-ship_return = NodePath("")
+ship_return = NodePath("../ShipReturn")
 
 [node name="hook" parent="." instance=ExtResource("3_uvjaw")]
 position = Vector2(0, -118)
@@ -78,10 +81,15 @@ shape = SubResource("WorldBoundaryShape2D_37ibp")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundry"]
 shape = SubResource("WorldBoundaryShape2D_sf3y7")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBoundry"]
+position = Vector2(-1, 3382)
+shape = SubResource("WorldBoundaryShape2D_pds37")
+
 [node name="ShipReturn" parent="." instance=ExtResource("4_agwwm")]
-position = Vector2(1, -220)
+position = Vector2(1, -140)
 
 [node name="Popup" parent="." instance=ExtResource("5_4o066")]
+visible = false
 offset_left = -247.0
 offset_top = -368.0
 offset_right = 257.0
