@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://cvc1m66nqm83x"]
+[gd_scene load_steps=2 format=3 uid="uid://cvc1m66nqm83x"]
+
+[ext_resource type="Script" uid="uid://d2u5hcvtwn3qr" path="res://scenes/title_screen/title_screen.gd" id="1_5df70"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_5df70")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -20,3 +23,5 @@ offset_bottom = 115.0
 text = "Play"
 
 [node name="Node" type="Node" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

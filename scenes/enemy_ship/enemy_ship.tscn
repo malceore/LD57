@@ -10,7 +10,6 @@ func _process(delta):
 	#	pathfollow.progress_ratio = 0
 	#else:
 	pathfollow.progress = pathfollow.progress + (speed*delta)
-	print(pathfollow.progress_ratio)
 
 
 

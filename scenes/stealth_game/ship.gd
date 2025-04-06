@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal dive(location)
+
 var current_area = null
 
 var speed = 100.0
@@ -43,6 +45,7 @@ func exited_area(area):
 func attempt_dive():
 	if(current_area == null):
 		return
+	dive.emit(current_area.location)
 	print("Diving!")
 
 func attempt_sonar_sweep():

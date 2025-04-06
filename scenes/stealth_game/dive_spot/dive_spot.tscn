@@ -6,7 +6,7 @@
 radius = 30.0
 
 [sub_resource type="Gradient" id="Gradient_ipj4b"]
-colors = PackedColorArray(0, 0, 0.678431, 1, 0, 0, 1, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3lwl4"]
 gradient = SubResource("Gradient_ipj4b")
