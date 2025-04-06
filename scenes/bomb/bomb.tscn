@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://6810kunj2ydg"]
+[gd_scene load_steps=6 format=3 uid="uid://6810kunj2ydg"]
 
 [ext_resource type="Script" uid="uid://cyua0k844dap5" path="res://scenes/bomb/bomb.gd" id="1_yj6gm"]
+[ext_resource type="Texture2D" uid="uid://caefocwuwamlg" path="res://art/dither_art_ld57.png" id="2_rqjch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqjch"]
 radius = 50.1597
@@ -18,6 +19,7 @@ freeze_mode = 1
 script = ExtResource("1_yj6gm")
 
 [node name="graphic" type="Polygon2D" parent="."]
+visible = false
 position = Vector2(0, 9)
 color = Color(0.821004, 0.747525, 0.908327, 1)
 polygon = PackedVector2Array(-47, 6, -16, 35, 21, 34, 52, 8, 52, -29, 19, -50, -20, -50, -48, -21)
@@ -50,6 +52,25 @@ damping_max = 0.782
 scale_amount_max = 6.0
 hue_variation_min = -0.53
 hue_variation_max = 0.61
+
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="sprites"]
+texture = ExtResource("2_rqjch")
+region_enabled = true
+region_rect = Rect2(687.692, 29.2888, 174.361, 198.319)
+
+[node name="Sprite2D2" type="Sprite2D" parent="sprites"]
+visible = false
+texture = ExtResource("2_rqjch")
+region_enabled = true
+region_rect = Rect2(396.203, 162.389, 187.671, 98.494)
+
+[node name="Sprite2D3" type="Sprite2D" parent="sprites"]
+visible = false
+texture = ExtResource("2_rqjch")
+region_enabled = true
+region_rect = Rect2(469.408, 6.66177, 171.699, 138.424)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

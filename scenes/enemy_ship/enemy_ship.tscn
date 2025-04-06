@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1ehpky7b03ut"]
+[gd_scene load_steps=6 format=3 uid="uid://d1ehpky7b03ut"]
+
+[ext_resource type="Texture2D" uid="uid://caefocwuwamlg" path="res://art/dither_art_ld57.png" id="1_dmncq"]
 
 [sub_resource type="GDScript" id="GDScript_gi0ku"]
 script/source = "extends CharacterBody2D
@@ -44,6 +46,7 @@ polygon = PackedVector2Array(-315.7, 303.99, 151.3, 303.99, -54.7, -15.0099)
 polygon = PackedVector2Array(-315, 302, 152, 302, -56, -15)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 offset_left = 47.0
 offset_top = 55.0
 offset_right = 133.0
@@ -53,5 +56,13 @@ texture = SubResource("GradientTexture2D_dmncq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(91.4993, 208.5)
 shape = SubResource("RectangleShape2D_dmncq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(88.9993, 199)
+rotation = 3.14159
+scale = Vector2(0.621604, 0.691958)
+texture = ExtResource("1_dmncq")
+region_enabled = true
+region_rect = Rect2(200.546, 310.13, 185.009, 451.209)
 
 [connection signal="body_entered" from="vision_cone/Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,15 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwmb2opl1itpl"]
+[gd_scene load_steps=4 format=3 uid="uid://cwmb2opl1itpl"]
 
 [ext_resource type="Script" uid="uid://bnpbriyc44r2k" path="res://scenes/stealth_game/dive_spot/dive_spot.gd" id="1_3lwl4"]
+[ext_resource type="Texture2D" uid="uid://caefocwuwamlg" path="res://art/dither_art_ld57.png" id="2_fskq7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ipj4b"]
 radius = 30.0
-
-[sub_resource type="Gradient" id="Gradient_ipj4b"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3lwl4"]
-gradient = SubResource("Gradient_ipj4b")
 
 [node name="dive_spot" type="Area2D"]
 script = ExtResource("1_3lwl4")
@@ -20,8 +15,9 @@ shape = SubResource("CircleShape2D_ipj4b")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, 1.96695e-06)
-scale = Vector2(0.21875, 56)
-texture = SubResource("GradientTexture1D_3lwl4")
+texture = ExtResource("2_fskq7")
+region_enabled = true
+region_rect = Rect2(136.658, 39.9368, 139.755, 137.093)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

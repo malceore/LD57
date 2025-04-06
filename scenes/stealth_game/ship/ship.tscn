@@ -1,12 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://w576aewouem5"]
+[gd_scene load_steps=7 format=3 uid="uid://w576aewouem5"]
 
 [ext_resource type="Script" uid="uid://dnb62oawbfrqq" path="res://scenes/stealth_game/ship.gd" id="1_1psft"]
-
-[sub_resource type="Gradient" id="Gradient_sqlxv"]
-colors = PackedColorArray(0.701961, 0, 0, 1, 1, 0.0509804, 0.0509804, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ygplh"]
-gradient = SubResource("Gradient_sqlxv")
+[ext_resource type="Texture2D" uid="uid://caefocwuwamlg" path="res://art/dither_art_ld57.png" id="2_m10ec"]
 
 [sub_resource type="Gradient" id="Gradient_ygplh"]
 
@@ -22,11 +17,12 @@ radius = 400.0
 script = ExtResource("1_1psft")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(0.210937, 85.9999)
-texture = SubResource("GradientTexture1D_ygplh")
+texture = ExtResource("2_m10ec")
+region_enabled = true
+region_rect = Rect2(-0.396145, 313.339, 181.818, 310.744)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+visible = false
 position = Vector2(0, -0.383721)
 scale = Vector2(0.431111, 0.395351)
 texture = SubResource("GradientTexture1D_23whf")
