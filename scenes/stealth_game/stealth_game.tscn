@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://xs8r6aue3u88"]
+[gd_scene load_steps=18 format=3 uid="uid://xs8r6aue3u88"]
 
 [ext_resource type="Script" uid="uid://dnb62oawbfrqq" path="res://scenes/stealth_game/ship.gd" id="1_7o2pb"]
-[ext_resource type="Script" path="res://scenes/stealth_game/stealth_game.gd" id="1_gso01"]
+[ext_resource type="Script" uid="uid://2tdjv3idlg51" path="res://scenes/stealth_game/stealth_game.gd" id="1_gso01"]
 [ext_resource type="PackedScene" uid="uid://cwmb2opl1itpl" path="res://scenes/stealth_game/dive_spot/dive_spot.tscn" id="2_hikq7"]
 [ext_resource type="PackedScene" uid="uid://d1ehpky7b03ut" path="res://scenes/enemy_ship/enemy_ship.tscn" id="3_u3qtp"]
 [ext_resource type="PackedScene" uid="uid://3mmam7vt30xk" path="res://scenes/popup/popup.tscn" id="5_sqlxv"]
@@ -13,17 +13,21 @@ colors = PackedColorArray(0.0412621, 0.104403, 0.75902, 1, 0.233819, 0.591615, 0
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7o2pb"]
 gradient = SubResource("Gradient_tlene")
 
-[sub_resource type="Gradient" id="Gradient_hikq7"]
-colors = PackedColorArray(0.843137, 0, 0, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_sqlxv"]
+colors = PackedColorArray(0.701961, 0, 0, 1, 1, 0.0509804, 0.0509804, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_u3qtp"]
-gradient = SubResource("Gradient_hikq7")
-width = 128
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ygplh"]
+gradient = SubResource("Gradient_sqlxv")
+
+[sub_resource type="Gradient" id="Gradient_ygplh"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_23whf"]
+gradient = SubResource("Gradient_ygplh")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7o2pb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hikq7"]
-radius = 200.0
+radius = 400.0
 
 [sub_resource type="Curve2D" id="Curve2D_gso01"]
 _data = {
@@ -64,19 +68,20 @@ texture = SubResource("GradientTexture1D_7o2pb")
 position = Vector2(2895, 1937)
 script = ExtResource("1_7o2pb")
 
-[node name="TextureRect" type="TextureRect" parent="ship"]
-offset_left = -65.0
-offset_top = -47.0
-offset_right = 63.0
-offset_bottom = 46.0
-texture = SubResource("GradientTexture1D_u3qtp")
+[node name="Sprite2D" type="Sprite2D" parent="ship"]
+position = Vector2(0, 1)
+scale = Vector2(0.210937, 85.9999)
+texture = SubResource("GradientTexture1D_ygplh")
+
+[node name="Sprite2D" type="Sprite2D" parent="ship/Sprite2D"]
+position = Vector2(0, -0.383721)
+scale = Vector2(0.431111, 0.395351)
+texture = SubResource("GradientTexture1D_23whf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship"]
-visible = false
 shape = SubResource("RectangleShape2D_7o2pb")
 
 [node name="sonar" type="Area2D" parent="ship"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship/sonar"]
 shape = SubResource("CircleShape2D_hikq7")

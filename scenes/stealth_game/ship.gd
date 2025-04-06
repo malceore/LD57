@@ -4,7 +4,7 @@ signal dive(location)
 
 var current_area = null
 
-var speed = 100.0
+var speed = 400.0
 var rotation_speed = 1.5
 
 func _process(delta):
