@@ -42,3 +42,5 @@ shape = SubResource("CircleShape2D_hikq7")
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 visible = false
 remote_path = NodePath("../../Camera2D")
+update_rotation = false
+update_scale = false
