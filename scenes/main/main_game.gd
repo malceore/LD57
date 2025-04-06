@@ -39,7 +39,7 @@ func end_game():
 	else:
 		win_loss_text = "LOSE"
 	end_game_screen.get_node("WinLossLabel").set_text("[b]YOU " + win_loss_text + "![/b]")
-	end_game_screen.get_node("ScoreLabel").set_text("[b]SCORE:" + str(Globals.SCORE) + "[/b]")
+	end_game_screen.get_node("ScoreLabel").set_text("[b]SCORE: " + str(Globals.SCORE) + "[/b]")
 	
 	for child in get_tree().root.get_node("main_game").get_children():
 		child.queue_free()

@@ -122,6 +122,12 @@ location = 2
 position = Vector2(4110, 3215)
 location = 3
 
+[node name="dive_spot5" parent="DiveSpots" instance=ExtResource("2_hikq7")]
+position = Vector2(1615, 836)
+
+[node name="dive_spot6" parent="DiveSpots" instance=ExtResource("2_hikq7")]
+position = Vector2(2841, 4096)
+
 [node name="ship" parent="." instance=ExtResource("4_ygplh")]
 position = Vector2(2895, 1937)
 
