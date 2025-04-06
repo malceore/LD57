@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xs8r6aue3u88"]
+[gd_scene load_steps=17 format=3 uid="uid://xs8r6aue3u88"]
 
 [ext_resource type="Script" uid="uid://2tdjv3idlg51" path="res://scenes/stealth_game/stealth_game.gd" id="1_gso01"]
 [ext_resource type="PackedScene" uid="uid://cwmb2opl1itpl" path="res://scenes/stealth_game/dive_spot/dive_spot.tscn" id="2_hikq7"]
@@ -38,12 +38,25 @@ _data = {
 }
 point_count = 25
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ygplh"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_23whf"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u0u3f"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bj0d7"]
+normal = Vector2(1, 0)
+
 [node name="stealth_game" type="Node2D"]
 script = ExtResource("1_gso01")
 
 [node name="background" type="TextureRect" parent="."]
-offset_right = 5181.0
-offset_bottom = 4481.0
+offset_left = -667.0
+offset_top = -596.0
+offset_right = 5980.0
+offset_bottom = 5053.0
 texture = SubResource("GradientTexture1D_7o2pb")
 
 [node name="EnemyShipPath" type="Node2D" parent="."]
@@ -124,5 +137,31 @@ offset_bottom = 2257.0
 
 [node name="ScoreDisplay" parent="Camera2D/Control" instance=ExtResource("6_ygplh")]
 position = Vector2(2386, 1558)
+
+[node name="WorldBoundary" type="Node2D" parent="."]
+
+[node name="NorthernBoundary" type="StaticBody2D" parent="WorldBoundary"]
+position = Vector2(1609, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary/NorthernBoundary"]
+shape = SubResource("WorldBoundaryShape2D_ygplh")
+
+[node name="EasternBoundary" type="StaticBody2D" parent="WorldBoundary"]
+position = Vector2(5232, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary/EasternBoundary"]
+shape = SubResource("WorldBoundaryShape2D_23whf")
+
+[node name="SouthernBoundary" type="StaticBody2D" parent="WorldBoundary"]
+position = Vector2(5232, 4493)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary/SouthernBoundary"]
+shape = SubResource("WorldBoundaryShape2D_u0u3f")
+
+[node name="WesternBoundary" type="StaticBody2D" parent="WorldBoundary"]
+position = Vector2(0, 4493)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary/WesternBoundary"]
+shape = SubResource("WorldBoundaryShape2D_bj0d7")
 
 [connection signal="dive" from="ship" to="." method="_on_ship_dive"]
