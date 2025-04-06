@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://w576aewouem5"]
+[gd_scene load_steps=9 format=3 uid="uid://w576aewouem5"]
 
 [ext_resource type="Script" uid="uid://dnb62oawbfrqq" path="res://scenes/stealth_game/ship.gd" id="1_1psft"]
+[ext_resource type="AudioStream" uid="uid://6nibrycb2l8t" path="res://sounds/sonar-sound-effect-230712.mp3" id="2_cf601"]
 [ext_resource type="Texture2D" uid="uid://caefocwuwamlg" path="res://art/dither_art_ld57.png" id="2_m10ec"]
+[ext_resource type="AudioStream" uid="uid://lu5n4p1y62g8" path="res://sounds/thai-motor-boat-64851.mp3" id="3_rcf21"]
 
 [sub_resource type="Gradient" id="Gradient_ygplh"]
 
@@ -15,6 +17,9 @@ radius = 400.0
 
 [node name="ship" type="CharacterBody2D"]
 script = ExtResource("1_1psft")
+
+[node name="AP_Sonar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cf601")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_m10ec")
@@ -42,6 +47,10 @@ update_rotation = false
 update_scale = false
 
 [node name="SonarTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
+
+[node name="AP_Motor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rcf21")
+volume_db = -25.0
 
 [connection signal="timeout" from="SonarTimer" to="." method="_on_sonar_timer_timeout"]
