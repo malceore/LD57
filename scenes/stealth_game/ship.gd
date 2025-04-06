@@ -3,6 +3,8 @@ extends CharacterBody2D
 signal dive(location)
 signal sonar
 
+var sonar_ready = true
+
 var current_area = null
 
 var speed = 400.0
@@ -50,8 +52,17 @@ func attempt_dive():
 	completed_area.queue_free()
 
 func attempt_sonar_sweep():
+	if !sonar_ready:
+		return
+	sonar_ready = false
+	
 	var dive_spots = $sonar.get_overlapping_areas()
 	for spot in dive_spots:
 		if spot.has_method("reveal_spot"):
 			spot.reveal_spot()
+			
 	sonar.emit()
+	$SonarTimer.start()
+
+func _on_sonar_timer_timeout() -> void:
+	sonar_ready = true

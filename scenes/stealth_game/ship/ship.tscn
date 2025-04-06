@@ -44,3 +44,8 @@ visible = false
 remote_path = NodePath("../../Camera2D")
 update_rotation = false
 update_scale = false
+
+[node name="SonarTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="SonarTimer" to="." method="_on_sonar_timer_timeout"]
