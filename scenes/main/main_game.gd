@@ -2,7 +2,12 @@ extends Node2D
 
 @onready var stealth_game_scene = $stealth_game
 
-var dive_spots = [null, preload("res://scenes/dive_game/dive_game.tscn")]
+var dive_spots = [preload("res://scenes/dive_game/dive_missions/dive_mission_1.tscn"),
+	preload("res://scenes/dive_game/dive_missions/dive_mission_2.tscn"),
+	preload("res://scenes/dive_game/dive_missions/dive_mission_3.tscn"),
+	preload("res://scenes/dive_game/dive_missions/dive_mission_4.tscn"),
+	preload("res://scenes/dive_game/dive_missions/dive_mission_5.tscn"),
+	preload("res://scenes/dive_game/dive_missions/dive_mission_6.tscn")]
 
 var current_dive_spot = null
 

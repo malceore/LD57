@@ -88,15 +88,18 @@ rotation = 2.68287
 
 [node name="dive_spot" parent="DiveSpots" instance=ExtResource("2_hikq7")]
 position = Vector2(176, 162)
+location = 0
 
 [node name="dive_spot2" parent="DiveSpots" instance=ExtResource("2_hikq7")]
 position = Vector2(4339, 989)
 
 [node name="dive_spot3" parent="DiveSpots" instance=ExtResource("2_hikq7")]
 position = Vector2(1406, 2920)
+location = 2
 
 [node name="dive_spot4" parent="DiveSpots" instance=ExtResource("2_hikq7")]
 position = Vector2(4110, 3215)
+location = 3
 
 [node name="ship" parent="." instance=ExtResource("4_ygplh")]
 position = Vector2(2895, 1937)
