@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://w576aewouem5" path="res://scenes/stealth_game/ship/ship.tscn" id="4_ygplh"]
 [ext_resource type="PackedScene" uid="uid://3mmam7vt30xk" path="res://scenes/popup/popup.tscn" id="5_sqlxv"]
 [ext_resource type="PackedScene" uid="uid://8qcj8g6haxf8" path="res://scenes/score_display/score_display.tscn" id="6_ygplh"]
-[ext_resource type="AudioStream" uid="uid://6nibrycb2l8t" path="res://sounds/sonar-sound-effect-230712.mp3" id="7_23whf"]
+[ext_resource type="AudioStream" uid="uid://cbhlssmotegm" path="res://sounds/FindingBombs.wav" id="7_23whf"]
 
 [sub_resource type="Gradient" id="Gradient_tlene"]
 offsets = PackedFloat32Array(0, 0.121094, 0.320312, 0.539062, 0.625, 0.804688, 0.894531, 1)
@@ -139,6 +139,7 @@ polygon = PackedVector2Array(-0.144003, -8.99433, -67.144, 30.0057, -0.144003, 3
 uv = PackedVector2Array(40, -79, -40, -45, 38, -63, 93, -41)
 
 [node name="Timer" type="Timer" parent="Camera2D/DiveSpotPointer"]
+wait_time = 2.5
 one_shot = true
 
 [node name="Control" type="Control" parent="Camera2D"]
@@ -185,8 +186,9 @@ position = Vector2(0, 4493)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary/WesternBoundary"]
 shape = SubResource("WorldBoundaryShape2D_bj0d7")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_23whf")
+autoplay = true
 
 [connection signal="dive" from="ship" to="." method="_on_ship_dive"]
 [connection signal="sonar" from="ship" to="." method="_on_ship_sonar"]

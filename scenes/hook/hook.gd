@@ -7,13 +7,15 @@ extends Node2D
 @onready var inventory = $hook/inventory
 @onready var cooldown = get_node("cooldown")
 @onready var animation_player = get_node("AnimationPlayer")
-@onready var audio_stream_player = get_node("AudioStreamPlayer")
+@onready var ap_splash = get_node("AP_Splash")
+@onready var ap_winch = get_node("AP_Winch")
 
 var hit_count = 0
 var playing = true
 
+
 func _ready():
-	audio_stream_player.play()
+	ap_splash.play()
 
 func on_hit():
 	hit_count += 1
@@ -41,6 +43,8 @@ func get_input():
 	if ready and playing:
 		var input_direction = Input.get_vector("left", "right", "up", "down")
 		hook.velocity = input_direction * speed
+		if hook.velocity != Vector2.ZERO && !ap_winch.is_playing():
+			ap_winch.play()
 
 
 func _physics_process(delta):
