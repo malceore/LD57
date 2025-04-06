@@ -15,6 +15,9 @@ var playing = true
 func _ready():
 	audio_stream_player.play()
 
+func stop_playing():
+	playing = false
+
 func on_hit():
 	hit_count += 1
 	if inventory.get_children().size() > 0:

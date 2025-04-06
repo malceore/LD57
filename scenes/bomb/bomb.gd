@@ -4,8 +4,15 @@ extends RigidBody2D
 @export var score_value = 250
 
 @onready var particals = $particals
+@onready var possible_sprites = $sprites.get_children()
 
 var held = false
+
+
+func _ready():
+	for sprite in possible_sprites:
+		sprite.visible = false
+	possible_sprites[randi() % possible_sprites.size()].visible = true		
 
 func explode():
 	particals.set_emitting(true)

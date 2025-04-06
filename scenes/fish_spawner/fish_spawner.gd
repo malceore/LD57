@@ -5,7 +5,6 @@ extends Node2D
 @export var fish_scene: PackedScene
 @export var spawn_points: Path2D
 
-
 func _ready() -> void:
 	$timer.wait_time = spawn_rate
 	$timer.start()
