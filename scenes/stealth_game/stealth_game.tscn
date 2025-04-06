@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://xs8r6aue3u88"]
+[gd_scene load_steps=13 format=3 uid="uid://xs8r6aue3u88"]
 
-[ext_resource type="Script" uid="uid://dnb62oawbfrqq" path="res://scenes/stealth_game/ship.gd" id="1_7o2pb"]
 [ext_resource type="Script" uid="uid://2tdjv3idlg51" path="res://scenes/stealth_game/stealth_game.gd" id="1_gso01"]
 [ext_resource type="PackedScene" uid="uid://cwmb2opl1itpl" path="res://scenes/stealth_game/dive_spot/dive_spot.tscn" id="2_hikq7"]
 [ext_resource type="PackedScene" uid="uid://d1ehpky7b03ut" path="res://scenes/enemy_ship/enemy_ship.tscn" id="3_u3qtp"]
+[ext_resource type="PackedScene" uid="uid://w576aewouem5" path="res://scenes/stealth_game/ship/ship.tscn" id="4_ygplh"]
 [ext_resource type="PackedScene" uid="uid://3mmam7vt30xk" path="res://scenes/popup/popup.tscn" id="5_sqlxv"]
+[ext_resource type="PackedScene" uid="uid://8qcj8g6haxf8" path="res://scenes/score_display/score_display.tscn" id="6_ygplh"]
 
 [sub_resource type="Gradient" id="Gradient_tlene"]
 offsets = PackedFloat32Array(0, 0.121094, 0.320312, 0.539062, 0.625, 0.804688, 0.894531, 1)
@@ -12,22 +13,6 @@ colors = PackedColorArray(0.0412621, 0.104403, 0.75902, 1, 0.233819, 0.591615, 0
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7o2pb"]
 gradient = SubResource("Gradient_tlene")
-
-[sub_resource type="Gradient" id="Gradient_sqlxv"]
-colors = PackedColorArray(0.701961, 0, 0, 1, 1, 0.0509804, 0.0509804, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ygplh"]
-gradient = SubResource("Gradient_sqlxv")
-
-[sub_resource type="Gradient" id="Gradient_ygplh"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_23whf"]
-gradient = SubResource("Gradient_ygplh")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o2pb"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hikq7"]
-radius = 400.0
 
 [sub_resource type="Curve2D" id="Curve2D_gso01"]
 _data = {
@@ -56,91 +41,83 @@ point_count = 25
 [node name="stealth_game" type="Node2D"]
 script = ExtResource("1_gso01")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2895, 1937)
-
 [node name="background" type="TextureRect" parent="."]
 offset_right = 5181.0
 offset_bottom = 4481.0
 texture = SubResource("GradientTexture1D_7o2pb")
 
-[node name="ship" type="CharacterBody2D" parent="."]
-position = Vector2(2895, 1937)
-script = ExtResource("1_7o2pb")
+[node name="EnemyShipPath" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="ship"]
-position = Vector2(0, 1)
-scale = Vector2(0.210937, 85.9999)
-texture = SubResource("GradientTexture1D_ygplh")
-
-[node name="Sprite2D" type="Sprite2D" parent="ship/Sprite2D"]
-position = Vector2(0, -0.383721)
-scale = Vector2(0.431111, 0.395351)
-texture = SubResource("GradientTexture1D_23whf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ship"]
-shape = SubResource("RectangleShape2D_7o2pb")
-
-[node name="sonar" type="Area2D" parent="ship"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ship/sonar"]
-shape = SubResource("CircleShape2D_hikq7")
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="ship"]
-remote_path = NodePath("../../Camera2D")
-
-[node name="Popup" parent="ship" instance=ExtResource("5_sqlxv")]
-offset_left = -283.0
-offset_top = 131.0
-offset_right = 221.0
-offset_bottom = 320.0
-
-[node name="dive_spot" parent="." instance=ExtResource("2_hikq7")]
-position = Vector2(176, 162)
-
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="EnemyShipPath"]
 curve = SubResource("Curve2D_gso01")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyShipPath/Path2D"]
 position = Vector2(3987, 103)
 rotation = -0.00197993
 
-[node name="enemy_ship" parent="Path2D/PathFollow2D" instance=ExtResource("3_u3qtp")]
+[node name="enemy_ship" parent="EnemyShipPath/Path2D/PathFollow2D" instance=ExtResource("3_u3qtp")]
 
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="Path2D2" type="Path2D" parent="EnemyShipPath"]
 curve = SubResource("Curve2D_sqlxv")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyShipPath/Path2D2"]
 position = Vector2(4450, 2150)
 rotation = 0.814343
 
-[node name="enemy_ship" parent="Path2D2/PathFollow2D" instance=ExtResource("3_u3qtp")]
+[node name="enemy_ship" parent="EnemyShipPath/Path2D2/PathFollow2D" instance=ExtResource("3_u3qtp")]
 
-[node name="Path2D3" type="Path2D" parent="."]
+[node name="Path2D3" type="Path2D" parent="EnemyShipPath"]
 curve = SubResource("Curve2D_ygplh")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyShipPath/Path2D3"]
 position = Vector2(2464, 3396)
 rotation = 2.20689
 
-[node name="enemy_ship" parent="Path2D3/PathFollow2D" instance=ExtResource("3_u3qtp")]
+[node name="enemy_ship" parent="EnemyShipPath/Path2D3/PathFollow2D" instance=ExtResource("3_u3qtp")]
 
-[node name="Path2D4" type="Path2D" parent="."]
+[node name="Path2D4" type="Path2D" parent="EnemyShipPath"]
 curve = SubResource("Curve2D_23whf")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyShipPath/Path2D4"]
 position = Vector2(2620, 1449)
 rotation = 2.68287
 
-[node name="enemy_ship" parent="Path2D4/PathFollow2D" instance=ExtResource("3_u3qtp")]
+[node name="enemy_ship" parent="EnemyShipPath/Path2D4/PathFollow2D" instance=ExtResource("3_u3qtp")]
 
-[node name="dive_spot2" parent="." instance=ExtResource("2_hikq7")]
+[node name="DiveSpots" type="Node2D" parent="."]
+
+[node name="dive_spot" parent="DiveSpots" instance=ExtResource("2_hikq7")]
+position = Vector2(176, 162)
+
+[node name="dive_spot2" parent="DiveSpots" instance=ExtResource("2_hikq7")]
 position = Vector2(4339, 989)
 
-[node name="dive_spot3" parent="." instance=ExtResource("2_hikq7")]
+[node name="dive_spot3" parent="DiveSpots" instance=ExtResource("2_hikq7")]
 position = Vector2(1406, 2920)
 
-[node name="dive_spot4" parent="." instance=ExtResource("2_hikq7")]
+[node name="dive_spot4" parent="DiveSpots" instance=ExtResource("2_hikq7")]
 position = Vector2(4110, 3215)
 
-[connection signal="dive" from="ship" to="." method="_on_ship_dive"]
+[node name="ship" parent="." instance=ExtResource("4_ygplh")]
+position = Vector2(2895, 1937)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2895, 1937)
+
+[node name="Control" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2895.0
+offset_top = -1937.0
+offset_right = -2855.0
+offset_bottom = -1897.0
+
+[node name="Popup" parent="Camera2D/Control" instance=ExtResource("5_sqlxv")]
+layout_mode = 0
+offset_left = 2612.0
+offset_top = 2068.0
+offset_right = 3116.0
+offset_bottom = 2257.0
+
+[node name="ScoreDisplay" parent="Camera2D/Control" instance=ExtResource("6_ygplh")]
+position = Vector2(2386, 1558)

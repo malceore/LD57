@@ -5,8 +5,8 @@ extends Node2D
 var boiler_plate = "[center]"
 
 func _ready() -> void:
-    $AnimationPlayer.play("hide")
+	$AnimationPlayer.play("hide")
 
 func reveal(text):
-    $RichTextLabel.text = text
-    $AnimationPlayer.play("reveal")
+	$RichTextLabel.text = text
+	$AnimationPlayer.play("reveal")

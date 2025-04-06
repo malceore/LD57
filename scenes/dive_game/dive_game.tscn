@@ -41,23 +41,40 @@ point_count = 6
 [node name="Background" type="Node2D" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
-offset_left = -1028.0
-offset_top = 3363.0
-offset_right = 2539.0
-offset_bottom = 5445.0
+offset_left = -2014.0
+offset_top = 4012.0
+offset_right = 2198.0
+offset_bottom = 8558.0
 rotation = 4.70877
 texture = SubResource("GradientTexture1D_dp1kh")
 
 [node name="TextureRect2" type="TextureRect" parent="Background"]
-offset_left = -1033.0
-offset_top = -209.0
-offset_right = -638.0
-offset_bottom = 1848.0
+offset_left = -2091.0
+offset_top = -208.0
+offset_right = -1696.0
+offset_bottom = 4451.0
 rotation = -1.57187
 texture = SubResource("GradientTexture1D_y4m4o")
 
+[node name="obstacle6" parent="Background" instance=ExtResource("4_gyhy8")]
+position = Vector2(-440, 3039)
+
+[node name="obstacle5" parent="Background" instance=ExtResource("4_gyhy8")]
+position = Vector2(-272, 2771)
+
+[node name="obstacle4" parent="Background" instance=ExtResource("4_gyhy8")]
+position = Vector2(-525, 3309)
+
+[node name="obstacle3" parent="Background" instance=ExtResource("4_gyhy8")]
+position = Vector2(31, 3497)
+
+[node name="obstacle2" parent="Background" instance=ExtResource("4_gyhy8")]
+position = Vector2(-254, 3469)
+
+[node name="obstacle" parent="Background" instance=ExtResource("4_gyhy8")]
+position = Vector2(320, 3455)
+
 [node name="boat" type="Polygon2D" parent="Background"]
-visible = false
 position = Vector2(-6, -177)
 color = Color(0.105435, 0.206834, 0.20296, 1)
 polygon = PackedVector2Array(-123, -78, -36, -78, -36, -149, 21, -151, 21, -84, 146, -84, 122, -43, 97, -34, -96, -34, -110, -43)
@@ -73,11 +90,11 @@ position = Vector2(0, -118)
 collision_layer = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundry"]
-position = Vector2(514, -210)
+position = Vector2(1764, -210)
 shape = SubResource("WorldBoundaryShape2D_iy2vq")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundry"]
-position = Vector2(-516, -209)
+position = Vector2(-1444, -209)
 shape = SubResource("WorldBoundaryShape2D_y4m4o")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundry"]
@@ -91,30 +108,8 @@ spawn_points = NodePath("Path2D")
 [node name="Path2D" type="Path2D" parent="fish_spawner"]
 curve = SubResource("Curve2D_av5r6")
 
-[node name="Fish" parent="." instance=ExtResource("3_7bg3v")]
-visible = false
-position = Vector2(-1055, 36)
-
 [node name="ShipReturn" parent="." instance=ExtResource("3_y4m4o")]
 position = Vector2(1, -220)
-
-[node name="obstacle6" parent="." instance=ExtResource("4_gyhy8")]
-position = Vector2(-440, 3039)
-
-[node name="obstacle5" parent="." instance=ExtResource("4_gyhy8")]
-position = Vector2(-272, 2771)
-
-[node name="obstacle4" parent="." instance=ExtResource("4_gyhy8")]
-position = Vector2(-525, 3309)
-
-[node name="obstacle3" parent="." instance=ExtResource("4_gyhy8")]
-position = Vector2(31, 3497)
-
-[node name="obstacle2" parent="." instance=ExtResource("4_gyhy8")]
-position = Vector2(-254, 3469)
-
-[node name="obstacle" parent="." instance=ExtResource("4_gyhy8")]
-position = Vector2(320, 3455)
 
 [node name="Popup" parent="." instance=ExtResource("7_av5r6")]
 offset_left = -247.0

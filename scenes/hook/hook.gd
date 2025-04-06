@@ -6,36 +6,47 @@ extends Node2D
 @onready var hook = get_node("hook")
 @onready var inventory = $hook/inventory
 @onready var cooldown = get_node("cooldown")
+@onready var animation_player = get_node("AnimationPlayer")
 
 var hit_count = 0
+var playing = true
 
 func on_hit():
 	hit_count += 1
 	if inventory.get_children().size() > 0:
-		if hit_count == 1:
-			var child = inventory.get_child(0)  
-			child.release()
-			child.reparent(get_parent())
-		elif hit_count > 1:
+		if hit_count > 2:
+			# Time to destory the item.
 			var child = inventory.get_child(0) 
 			if child != null and child.has_method("explode"):
 				print("Bomb explodes!")
+				animation_player.play("shake")
 				child.explode()
 			else:
+				animation_player.play("shake")
 				child.release()
 				child.queue_free()
+		else:
+			# Otherwise we just drop it.
+			var child = inventory.get_child(0)  
+			child.release()
+			animation_player.play("shake")
+			child.reparent(get_parent())
+
 
 func get_input():
-	if ready:
+	if ready and playing:
 		var input_direction = Input.get_vector("left", "right", "up", "down")
 		hook.velocity = input_direction * speed
+
 
 func _physics_process(delta):
 	if ready:
 		var colliding = hook.get_last_slide_collision()
-		if cooldown.is_stopped() && colliding != null:# and colliding.name == "obstacle":
-			cooldown.start()
-			on_hit()
+		if cooldown.is_stopped() && colliding != null:
+			if "fish" in colliding.get_collider().get_parent().name or "obstacle" in colliding.get_collider().get_parent().name:
+				#print(colliding.get_collider().get_parent().name)
+				cooldown.start()
+				on_hit()
 		get_input()
 		chain.set_point_position(0, get_node("spool").get_global_position())
 		chain.set_point_position(1, get_node("hook").get_global_position())

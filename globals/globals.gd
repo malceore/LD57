@@ -7,3 +7,4 @@ enum GameMode {
 
 var CURRENT_MODE = GameMode.STEALTH_GAME
 var SCORE = 0
+var TUTORIALS_COMPLETED = 0

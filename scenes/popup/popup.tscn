@@ -30,30 +30,30 @@ layout_mode = 2
 size_flags_vertical = 3
 current_tab = 0
 
-[node name="Tutorial1" type="RichTextLabel" parent="VBoxContainer/TabContainer"]
+[node name="Introduction" type="RichTextLabel" parent="VBoxContainer/TabContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Welcome to Depth Charge
-Use WASD/Arrow keys to move around.
+Collect all sunken bombs and sea mines to clear the way for your allies and win the game!
+"
+metadata/_tab_index = 0
+
+[node name="Overworld Tutorial" type="RichTextLabel" parent="VBoxContainer/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Use WASD/Arrow keys to move around. Tank control style.
 Avoid enemy ships. 
 Use 'space' to send out a sonar to detect sunken explosives. 
 When you see the blue dive square press 'e' to start diving.
 "
-metadata/_tab_index = 0
-
-[node name="Tutorial2" type="RichTextLabel" parent="VBoxContainer/TabContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-text = "Collect all sunken bombs and sea mines to clear the way for your allies and win the game!
-"
 metadata/_tab_index = 1
 
-[node name="Tutorial3" type="RichTextLabel" parent="VBoxContainer/TabContainer"]
+[node name="Diving Tutorial" type="RichTextLabel" parent="VBoxContainer/TabContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "Use WASD/Arrows to dive your hook.
+text = "When in diving mode, use WASD/Arrows to move your diving hook. Touch the bombs to hook them and bring them back up to your ship..
 Be careful with the sunken bombs or they will explode and you'll leave empty handed."
 metadata/_tab_index = 2
 

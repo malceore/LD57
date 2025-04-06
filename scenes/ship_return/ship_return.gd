@@ -14,7 +14,11 @@ func enable():
 
 func _on_body_entered(body:Node2D) -> void:
 	if enabled:
-		score_float_text.reveal("<your score here>")
+		for item in body.get_node("inventory").get_children():
+			score_float_text.reveal("Plus " + str(item.score_value) + " points!")
+			Globals.SCORE += item.score_value
+			#item.queue_free()
+			await get_tree().create_timer(0.4).timeout
 		set_sail_button.visible = true
 
 func _on_set_sale_button_pressed() -> void:

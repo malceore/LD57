@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://8qcj8g6haxf8"]
+
+[ext_resource type="Script" uid="uid://bv57npdg784db" path="res://scenes/score_display/score_display.gd" id="1_6846l"]
+
+[node name="ScoreDisplay" type="Node2D"]
+script = ExtResource("1_6846l")
+
+[node name="label" type="RichTextLabel" parent="."]
+offset_right = 276.0
+offset_bottom = 38.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "[center]Score: 0"
