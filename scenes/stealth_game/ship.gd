@@ -50,6 +50,7 @@ func attempt_dive():
 	var completed_area = current_area
 	dive.emit(current_area.location)
 	completed_area.queue_free()
+	Globals.SPOTS_REMAINING -= 1
 
 func attempt_sonar_sweep():
 	if !sonar_ready:

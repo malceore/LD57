@@ -23,6 +23,12 @@ func _on_stealth_game_dive(location) -> void:
 	remove_child($stealth_game)
 
 func _on_dive_game_end_game_pressed() -> void:
-	current_dive_spot.queue_free()
-	get_tree().root.get_node("main_game").add_child(stealth_game_scene)
-	stealth_game_scene.get_node("Camera2D").make_current()
+	if Globals.SPOTS_REMAINING < 1:
+		end_game()
+	else:
+		current_dive_spot.queue_free()
+		get_tree().root.get_node("main_game").add_child(stealth_game_scene)
+		stealth_game_scene.get_node("Camera2D").make_current()
+
+func end_game():
+	pass
