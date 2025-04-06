@@ -37,6 +37,7 @@ text = "Welcome to Depth Charge
 Use WASD/Arrow keys to move around.
 Avoid enemy ships. 
 Use 'space' to send out a sonar to detect sunken explosives. 
+When you see the blue dive square press 'e' to start diving.
 "
 metadata/_tab_index = 0
 
