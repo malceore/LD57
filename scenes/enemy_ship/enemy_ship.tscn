@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1ehpky7b03ut"]
+[gd_scene load_steps=7 format=3 uid="uid://d1ehpky7b03ut"]
 
 [ext_resource type="Texture2D" uid="uid://caefocwuwamlg" path="res://art/dither_art_ld57.png" id="1_dmncq"]
 
@@ -14,11 +14,9 @@ func _process(delta):
 	#else:
 	pathfollow.progress = pathfollow.progress + (speed*delta)
 
-
-
-func _on_area_2d_body_entered(body):
-	if name != body.name:
-		print(body.name)
+func _on_death_zone_body_entered(body: Node2D) -> void:
+	if body.name == \"ship\":
+		get_tree().root.get_node(\"main_game\").end_game()
 "
 
 [sub_resource type="Gradient" id="Gradient_gi0ku"]
@@ -28,6 +26,9 @@ gradient = SubResource("Gradient_gi0ku")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmncq"]
 size = Vector2(79, 309)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rpkr"]
+size = Vector2(104, 142)
 
 [node name="enemy_ship" type="CharacterBody2D"]
 position = Vector2(-182, 88)
@@ -66,4 +67,11 @@ texture = ExtResource("1_dmncq")
 region_enabled = true
 region_rect = Rect2(200.546, 310.13, 185.009, 451.209)
 
-[connection signal="body_entered" from="vision_cone/Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="DeathZone" type="Area2D" parent="."]
+position = Vector2(30.9988, 322)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(61.9998, 61)
+shape = SubResource("RectangleShape2D_8rpkr")
+
+[connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
