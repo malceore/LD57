@@ -17,8 +17,10 @@ var playing = true
 func _ready():
 	ap_splash.play()
 
+
 func stop_playing():
 	playing = false
+
 
 func on_hit():
 	hit_count += 1
@@ -60,5 +62,5 @@ func _physics_process(delta):
 				on_hit()
 		get_input()
 		chain.set_point_position(0, get_node("spool").get_global_position())
-		chain.set_point_position(1, get_node("hook").get_global_position())
+		chain.set_point_position(1, get_node("hook").get_node("pivot").get_global_position())
 		hook.move_and_slide()

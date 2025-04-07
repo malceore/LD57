@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlmaqgfrr00m4"]
+[gd_scene load_steps=11 format=3 uid="uid://dlmaqgfrr00m4"]
 
 [ext_resource type="Script" uid="uid://caww0cfwbffrr" path="res://scenes/hook/hook.gd" id="1_x1wii"]
+[ext_resource type="Texture2D" uid="uid://dd1qojc8jjjaw" path="res://art/chain_link.png" id="2_06j00"]
 [ext_resource type="Texture2D" uid="uid://caefocwuwamlg" path="res://art/dither_art_ld57.png" id="2_75di5"]
 [ext_resource type="AudioStream" uid="uid://dy63l2j0ywbfc" path="res://sounds/water-splash-199583.mp3" id="3_kbm4x"]
 [ext_resource type="AudioStream" uid="uid://dfautyvilsvm1" path="res://sounds/toy-ratchet-71580.mp3" id="4_v52l5"]
@@ -64,9 +65,14 @@ radius = 43.7379
 script = ExtResource("1_x1wii")
 
 [node name="spool" type="Node2D" parent="."]
+position = Vector2(-1, -129)
 
 [node name="chain" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 0, 0)
+width = 20.0
+texture = ExtResource("2_06j00")
+texture_mode = 1
+joint_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -96,6 +102,9 @@ shape = SubResource("CircleShape2D_x1wii")
 
 [node name="inventory" type="Node2D" parent="hook"]
 position = Vector2(-1, -40)
+
+[node name="pivot" type="Node2D" parent="hook"]
+position = Vector2(-2, -72)
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true

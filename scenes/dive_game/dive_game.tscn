@@ -84,7 +84,7 @@ position = Vector2(38, 3081)
 ship_return = NodePath("../ShipReturn")
 
 [node name="hook" parent="." instance=ExtResource("1_dp1kh")]
-position = Vector2(0, -118)
+position = Vector2(2, -27)
 
 [node name="WorldBoundry" type="StaticBody2D" parent="."]
 collision_layer = 7
@@ -98,6 +98,7 @@ position = Vector2(-1444, -209)
 shape = SubResource("WorldBoundaryShape2D_y4m4o")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundry"]
+position = Vector2(2, -39)
 shape = SubResource("WorldBoundaryShape2D_gyhy8")
 
 [node name="fish_spawner" parent="." node_paths=PackedStringArray("spawn_points") instance=ExtResource("3_77au6")]
@@ -109,9 +110,10 @@ spawn_points = NodePath("Path2D")
 curve = SubResource("Curve2D_av5r6")
 
 [node name="ShipReturn" parent="." instance=ExtResource("3_y4m4o")]
-position = Vector2(1, -220)
+position = Vector2(3, -149)
 
 [node name="Popup" parent="." instance=ExtResource("7_av5r6")]
+visible = false
 offset_left = -247.0
 offset_top = -368.0
 offset_right = 257.0
