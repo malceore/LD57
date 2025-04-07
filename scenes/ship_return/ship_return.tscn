@@ -19,7 +19,7 @@ shape = SubResource("RectangleShape2D_iy2vq")
 position = Vector2(0, -110)
 texture = ExtResource("3_e7i2m")
 region_enabled = true
-region_rect = Rect2(406.851, 553.703, 529.738, 194.326)
+region_rect = Rect2(406.851, 549.67, 445.711, 198.359)
 
 [node name="float_text" parent="." instance=ExtResource("2_e7i2m")]
 position = Vector2(61, -82)

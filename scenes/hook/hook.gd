@@ -50,6 +50,8 @@ func get_input():
 		hook.velocity = input_direction * speed
 		if hook.velocity != Vector2.ZERO && !ap_winch.is_playing():
 			ap_winch.play()
+		hook.move_and_slide()
+	
 
 
 func _physics_process(delta):
@@ -63,4 +65,4 @@ func _physics_process(delta):
 		get_input()
 		chain.set_point_position(0, get_node("spool").get_global_position())
 		chain.set_point_position(1, get_node("hook").get_node("pivot").get_global_position())
-		hook.move_and_slide()
+		
