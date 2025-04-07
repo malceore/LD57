@@ -43,9 +43,8 @@ visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Use WASD/Arrow keys to move around. Tank control style.
-Avoid enemy ships. 
-Use 'space' to send out a sonar to detect sunken explosives. 
-When you see the blue dive square press 'e' to start diving.
+Avoid hitting enemy ships.
+Use 'spacebar' to send out a sonar to detect sunken explosives. When you see the ripples on the surface  press 'e' to start diving for explosives.
 "
 metadata/_tab_index = 1
 
@@ -53,8 +52,7 @@ metadata/_tab_index = 1
 visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "When in diving mode, use WASD/Arrows to move your diving hook. Touch the bombs to hook them and bring them back up to your ship..
-Be careful with the sunken bombs or they will explode and you'll leave empty handed."
+text = "When in diving mode, use WASD/Arrows to move your diving hook. Touch the bombs to hook them and bring them back up to your ship. Be careful with the sunken bombs or they will explode and you'll leave empty handed."
 metadata/_tab_index = 2
 
 [node name="CloseButton" type="Button" parent="VBoxContainer"]
