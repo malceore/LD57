@@ -5,6 +5,7 @@ extends RigidBody2D
 
 @onready var particals = $particals
 @onready var possible_sprites = $sprites.get_children()
+@onready var audio_stream_player = $AudioStreamPlayer
 
 var held = false
 
@@ -14,9 +15,13 @@ func _ready():
 		sprite.visible = false
 	possible_sprites[randi() % possible_sprites.size()].visible = true		
 
+
 func explode():
+	audio_stream_player.play()
 	particals.set_emitting(true)
 	await particals.finished
+	await audio_stream_player.finished
+	$Area2D/CollisionShape2D.disabled = true
 	queue_free()
 
 func release():
