@@ -61,10 +61,10 @@ normal = Vector2(1, 0)
 script = ExtResource("1_gso01")
 
 [node name="background" type="TextureRect" parent="."]
-offset_left = -667.0
-offset_top = -596.0
-offset_right = 5980.0
-offset_bottom = 5053.0
+offset_left = -1400.0
+offset_top = -1609.0
+offset_right = 7057.0
+offset_bottom = 5947.0
 texture = SubResource("GradientTexture1D_7o2pb")
 
 [node name="EnemyShipPath" type="Node2D" parent="."]
