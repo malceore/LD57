@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck6d856w06301"]
+[gd_scene load_steps=6 format=3 uid="uid://ck6d856w06301"]
 
 [ext_resource type="Script" uid="uid://dr8jv60nto0ty" path="res://scenes/ship_return/ship_return.gd" id="1_dikw6"]
 [ext_resource type="PackedScene" uid="uid://dqeweh216gmlj" path="res://scenes/float_text/float_text.tscn" id="2_e7i2m"]
 [ext_resource type="Texture2D" uid="uid://caefocwuwamlg" path="res://art/dither_art_ld57.png" id="3_e7i2m"]
+[ext_resource type="AudioStream" uid="uid://bny731v55nfle" path="res://sounds/OpenSnEAkFinal.wav" id="4_oq6n7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iy2vq"]
 size = Vector2(267, 162)
@@ -29,6 +30,10 @@ offset_top = -258.0
 offset_right = 71.0
 offset_bottom = -214.0
 text = "Set Sail..."
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oq6n7")
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="pressed" from="SetSailButton" to="." method="_on_set_sale_button_pressed"]

@@ -15,6 +15,8 @@ func enable():
 func _on_body_entered(body:Node2D) -> void:
 	if enabled:
 		for item in body.get_node("inventory").get_children():
+			if body.get_parent().has_method("stop_playing"):
+				body.get_parent().stop_playing()
 			Globals.BOMBS_CAPTURED += 1
 			score_float_text.reveal("Plus " + str(item.score_value) + " points!")
 			Globals.SCORE += item.score_value
