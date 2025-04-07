@@ -57,11 +57,6 @@ func attempt_sonar_sweep():
 		return
 	sonar_ready = false
 	
-	var dive_spots = $sonar.get_overlapping_areas()
-	for spot in dive_spots:
-		if spot.has_method("reveal_spot"):
-			spot.reveal_spot()
-			
 	sonar.emit()
 	$SonarTimer.start()
 
